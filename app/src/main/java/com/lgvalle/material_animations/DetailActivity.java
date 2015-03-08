@@ -26,7 +26,6 @@ public class DetailActivity extends ActionBarActivity {
         ex.setDuration(2000);
         getWindow().setExitTransition(ex);
         getWindow().setEnterTransition(ex);
-        getWindow().setReturnTransition(new Fade());
     }
 
 

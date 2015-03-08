@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.transition.Explode;
-import android.transition.Fade;
 import android.view.View;
 
 
@@ -22,12 +21,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void setupWindowAnimations() {
-        Fade ex = new Fade();
-        ex.setDuration(2000);
         Explode expl = new Explode();
         expl.setDuration(2000);
 
-        getWindow().setExitTransition(ex);
+        getWindow().setExitTransition(expl);
         getWindow().setEnterTransition(expl);
 
 
