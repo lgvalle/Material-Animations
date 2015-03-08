@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10dp"
+    android:id="@+id/square_green"
+    android:layout_width="50dp"
+    android:background="@android:color/holo_green_light"
+    android:layout_height="50dp" />
+

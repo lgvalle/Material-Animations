@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Material-Animations</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="square_red_name">square_red</string>
+</resources>
