@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <View
+        android:layout_width="150dp"
+        android:id="@+id/big_square_blue"
+        android:layout_margin="10dp"
+        android:transitionName="@string/square_blue_name"
+        android:layout_centerInParent="true"
+        android:background="@android:color/holo_blue_light"
+        android:layout_height="150dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Activity Detail 2"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_centerHorizontal="true"
+
+        android:layout_above="@+id/big_square_blue"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="This is the content body text of the activity"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/big_square_blue"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

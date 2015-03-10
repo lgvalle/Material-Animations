@@ -22,6 +22,7 @@
         android:id="@+id/square_blue"
         android:layout_width="50dp"
         android:background="@android:color/holo_blue_light"
+        android:transitionName="@string/square_blue_name"
         android:layout_height="50dp"/>
 
     <View

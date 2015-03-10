@@ -15,6 +15,7 @@ import android.view.View;
 public class MainActivity extends ActionBarActivity {
 
     private View squareRed;
+    private View squareBlue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class MainActivity extends ActionBarActivity {
         getWindow().setExitTransition(explode);
 
         Fade fade = new Fade();
-        fade.setDuration(2000);
         getWindow().setReenterTransition(fade);
     }
 
@@ -39,10 +39,23 @@ public class MainActivity extends ActionBarActivity {
         squareRed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, DetailActivity.class);
+                Intent i = new Intent(MainActivity.this, DetailActivity1.class);
                 ActivityOptions transitionActivityOptions =
                         ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
-                //new Pair<View, String>(squareRed, getString(R.string.square_red_name))
+                startActivity(i, transitionActivityOptions.toBundle());
+            }
+        });
+
+        squareBlue = findViewById(R.id.square_blue);
+        squareBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, DetailActivity2.class);
+
+                View sharedView = squareBlue;
+                String transitionName = getString(R.string.square_blue_name);
+
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
                 startActivity(i, transitionActivityOptions.toBundle());
             }
         });

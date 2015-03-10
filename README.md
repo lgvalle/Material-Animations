@@ -1,6 +1,6 @@
 # Android Transitions
 
-android.Transition Framework can be used for three things:
+android.Transition Framework can be used for three main things:
 
 1. Animate View elements in transitions between activites (or fragments)
 2. Animate shared elements (hero views) in transitions between activities (or fragments)
@@ -9,10 +9,9 @@ android.Transition Framework can be used for three things:
 
 ## 1. Transitions between Activities
 
-Animate **content** (non-hero views) 
+Animate existing activity layout **content** (non-hero views) 
 
 ![A Start B](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/A_startActivity_B.png)
-
 
 You can define these transitions **declarative** using XML 
 
@@ -44,7 +43,7 @@ You can define these transitions **declarative** using XML
 
     private void setupWindowAnimations() {
         Explode explode = new Explode();
-        expl.setDuration(2000);
+        explode.setDuration(2000);
         getWindow().setExitTransition(explode);
     }
 ```
@@ -61,7 +60,7 @@ You can define these transitions **declarative** using XML
 
     private void setupWindowAnimations() {
         Explode explode = new Explode();
-        expl.setDuration(2000);
+        explode.setDuration(2000);
         getWindow().setEnterTransition(explode);
     }
 
@@ -136,5 +135,68 @@ We have a nice Explode for going forward and Fade for backward:
 
 ![b back a screenshot](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/example2.gif)
 
+
+## 2. Shared elements between Activities
+
+The idea behind this is having two different views in two different layouts and link them somehow with an animation.
+Transition framework will then do _whatever animations it consider necessary_ to show the user a transition from one view to another.
+
+Keep this always in mind: the view is not really moving from one layout to another. They are two independent views.
+
+
+![A Start B with shared](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/a_b_shared_element.png)
+
+As you can see there are two views with ids 'smallSquare' and 'bigSquare'. But they have the **same** 'transitionName'. This way the Transition Framework knows it needs to create an animation from one view to the other.
+
+Translated to code:
+
+> MainActivity
+
+```java
+
+squareBlue.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(MainActivity.this, DetailActivity2.class);
+
+        View sharedView = squareBlue;
+        String transitionName = getString(R.string.square_blue_name);
+
+        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+        startActivity(i, transitionActivityOptions.toBundle());
+    }
+});
+
+```
+
+> layout/main_activity.xml
+
+```xml
+<View
+        android:layout_margin="10dp"
+        android:id="@+id/square_blue"
+        android:layout_width="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:transitionName="@string/square_blue_name"
+        android:layout_height="50dp"/>
+
+```
+
+> layou/details_activity2.xml
+
+```xml
+<View
+        android:layout_width="150dp"
+        android:id="@+id/big_square_blue"
+        android:layout_margin="10dp"
+        android:transitionName="@string/square_blue_name"
+        android:layout_centerInParent="true"
+        android:background="@android:color/holo_blue_light"
+        android:layout_height="150dp" />
+```
+
+Just that code will produce this beautiful transition animation:
+
+![a to b with shared element](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements.gif)
 
 
