@@ -201,7 +201,7 @@ Just that code will produce this beautiful transition animation:
 
 ![a to b with shared element](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements.gif)
 
-As you can see, Transition SDK is creating and executing an animation to create the ilusion that the view is moving and changing shape.
+As you can see, Transition framework is creating and executing an animation to create the ilusion that the view is moving and changing shape.
 
 To proof the blue square view is not really _moving_ we can do this quick exercise: change transitioName in DetailsActivity from Big Blue Square to the Title Text above it.
 
@@ -219,6 +219,60 @@ To proof the blue square view is not really _moving_ we can do this quick exerci
 If we now execute the app we have the same behaviour but targeting a different view:
 
 ![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements2.gif)        
+
+
+## 3. Animate view layout elements
+
+Transition framework can also be used to animate element changes within current activity layout. 
+
+Transitions happen between scenes. An scene defines a static state of our UI. You can do complex things regarding _scenes_ but I want to keep this example as **simple as possible**. 
+
+If you want to know more about scenes I recomend you check [this video by Chet Hasse] 
+(https://www.youtube.com/watch?v=S3H7nJ4QaD8)
+
+In this example I'm going to use the easier way to animate layout changes inside an Activity layout:
+
+```java
+TransitionManager.beginDelayedTransition(sceneRoot);
+```
+
+With just this line of code we are telling the framework we are going to perform some UI changes that it will need to animate.
+
+After that we made the changes on our UI elements:
+
+```java
+setViewWidth(squareRed, 500);
+setViewWidth(squareBlue, 500);
+setViewWidth(squareGreen, 500);
+setViewWidth(squareYellow, 500);
+```
+
+This will change those views width attribute to make it larger. That will trigger a `layoutMeasure`. At that point the Transition framework will record start and ending values and will create an animation to transition from one to another.
+
+```java
+ squareGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(sceneRoot);
+                setViewWidth(squareRed, 500);
+                setViewWidth(squareBlue, 500);
+                setViewWidth(squareGreen, 500);
+                setViewWidth(squareYellow, 500);
+            }
+        });
+    }
+
+    private void setViewWidth(View view, int x) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.width = x;
+        view.setLayoutParams(params);
+    }
+```
+    
+![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scene-transition.gif)   
+
+
+
 
 
 

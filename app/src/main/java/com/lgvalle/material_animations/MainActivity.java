@@ -8,14 +8,21 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.transition.Explode;
 import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class MainActivity extends ActionBarActivity {
 
+    private ViewGroup sceneRoot;
     private View squareRed;
     private View squareBlue;
+    private View squareGreen;
+    private View squareYellow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setupLayout() {
+        sceneRoot = (LinearLayout) findViewById(R.id.scene_root);
+
         squareRed = findViewById(R.id.square_red);
         squareRed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,5 +68,25 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(i, transitionActivityOptions.toBundle());
             }
         });
+
+        squareGreen = findViewById(R.id.square_green);
+        squareGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(sceneRoot);
+                setViewWidth(squareRed, 500);
+                setViewWidth(squareBlue, 500);
+                setViewWidth(squareGreen, 500);
+                setViewWidth(squareYellow, 500);
+            }
+        });
+
+        squareYellow = findViewById(R.id.square_yellow);
+    }
+
+    private void setViewWidth(View view, int x) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.width = x;
+        view.setLayoutParams(params);
     }
 }
