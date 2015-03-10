@@ -139,18 +139,20 @@ We have a nice Explode for going forward and Fade for backward:
 ## 2. Shared elements between Activities
 
 The idea behind this is having two different views in two different layouts and link them somehow with an animation.
+
 Transition framework will then do _whatever animations it consider necessary_ to show the user a transition from one view to another.
 
-Keep this always in mind: the view is not really moving from one layout to another. They are two independent views.
+Keep this always in mind: the view **is not really moving** from one layout to another. They are two independent views.
 
 
 ![A Start B with shared](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/a_b_shared_element.png)
 
-As you can see there are two views with ids 'smallSquare' and 'bigSquare'. But they have the **same** 'transitionName'. This way the Transition Framework knows it needs to create an animation from one view to the other.
+As you can see there are two views with ids 'smallSquare' and 'bigSquare'. But they have the **same** 'transitionName'. 
 
-Translated to code:
+This way the Transition Framework knows it needs to create an animation from one view to the other.
 
-> MainActivity
+
+> MainActivity.java
 
 ```java
 
@@ -198,5 +200,25 @@ squareBlue.setOnClickListener(new View.OnClickListener() {
 Just that code will produce this beautiful transition animation:
 
 ![a to b with shared element](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements.gif)
+
+As you can see, Transition SDK is creating and executing an animation to create the ilusion that the view is moving and changing shape.
+
+To proof the blue square view is not really _moving_ we can do this quick exercise: change transitioName in DetailsActivity from Big Blue Square to the Title Text above it.
+
+```xml
+<TextView
+        android:layout_width="wrap_content"
+        android:text="Activity Detail 2"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_centerHorizontal="true"
+        android:transitionName="@string/square_blue_name"
+        android:layout_above="@+id/big_square_blue"
+        android:layout_height="wrap_content" />
+```
+
+If we now execute the app we have the same behaviour but targeting a different view:
+
+![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements2.gif)        
+
 
 
