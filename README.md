@@ -17,7 +17,7 @@ You can define these transitions **declarative** using XML or **programatically*
 
 ### Declarative
 
-> res/transation/activity_explode.xml
+> res/transition/activity_explode.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -223,7 +223,7 @@ Just that code will produce this beautiful transition animation:
 
 ![a to b with shared element](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements.gif)
 
-As you can see, Transition framework is creating and executing an animation to create the ilusion that the view is moving and changing shape.
+As you can see, Transition framework is creating and executing an animation to create the illusion that the view is moving and changing shape.
 
 To proof the blue square view is not really _moving_ we can do this quick exercise: change transitioName in DetailsActivity from Big Blue Square to the Title Text above it.
 
