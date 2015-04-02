@@ -35,7 +35,7 @@
 
     <View
         android:layout_margin="10dp"
-        android:id="@+id/square_yellow"
+        android:id="@+id/square_orange"
         android:layout_width="50dp"
         android:background="@android:color/holo_orange_light"
         android:layout_height="50dp"/>

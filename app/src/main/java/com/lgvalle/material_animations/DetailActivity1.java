@@ -20,7 +20,5 @@ public class DetailActivity1 extends ActionBarActivity {
         Explode explode = new Explode();
         explode.setDuration(2000);
         getWindow().setEnterTransition(explode);
-
-
     }
 }

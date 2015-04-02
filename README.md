@@ -13,7 +13,9 @@ Animate existing activity layout **content** (non-hero views)
 
 ![A Start B](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/A_startActivity_B.png)
 
-You can define these transitions **declarative** using XML 
+You can define these transitions **declarative** using XML or **programatically**.
+
+### Declarative
 
 > res/transation/activity_explode.xml
 
@@ -29,7 +31,27 @@ You can define these transitions **declarative** using XML
 <item name="android:windowEnterTransition">@transition/activity_explode.xml</item>
 ```
 
-... or **programatically**.
+To inflate specific xml defined transition: 
+
+> MainActivity.java
+ 
+```java
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setupWindowAnimations();
+    }
+
+    private void setupWindowAnimations() {
+        Explode explode = TransitionInflater.from(this).inflateTransition(R.transition.activity_explode);
+        explode.setDuration(2000);
+        getWindow().setExitTransition(explode);
+    }
+
+```
+
+### Programatically 
 
 > MainActivity.java
 
@@ -272,6 +294,93 @@ This will change those views width attribute to make it larger. That will trigge
 ![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scene-transition.gif)   
 
 
+## 4. Shared elements + Circular Reveal
+Circular Reveal is just an animation to show or hide a group of UI elements. It is available since API 21 in `ViewAnimationUtils` class. 
+
+In this example I'm going to demostrate how can you make use of Shared Element Transition and Circular Reveal Animation to smoothly switch UI context.
+
+![shared+circularreveal](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/example3.gif)   
+
+### Enter Animation
+What is happening step by step is:
+
+* Shared orange box is transitioning from `MainActivity` to `DetailsActivity`.
+* `DetailsActivity` background viewgroup visibility starts as `INVISIBLE`.
+
+```xml
+ <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/backgroundViewGroup"
+        android:visibility="invisible"
+        ...
+```        
+* After `SharedElementEnterTransition` ends a `CircularReveal` animation takes place making the background viewgroup visible.
+
+```java
+        Transition enterTransition = getWindow().getSharedElementEnterTransition();
+        enterTransition.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {}
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                animateRevealShow(bgViewGroup);
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {}
+
+            @Override
+            public void onTransitionPause(Transition transition) {}
+
+            @Override
+            public void onTransitionResume(Transition transition) {}
+        });
+```
+
+### Exit Animation
+On exit transition steps are:
+
+* `SharedElementReturnTransition` is delayed 1 second.
+
+```java
+        Transition sharedElementReturnTransition = getWindow().getSharedElementReturnTransition();
+        sharedElementReturnTransition.setStartDelay(ANIM_DURATION);
+```
+
+* `ReturnTransition` duration is setted to 1 second. Have in mind this are two **different** transitions.
+
+```java
+        Transition returnTransition = getWindow().getReturnTransition();
+        returnTransition.setDuration(ANIM_DURATION);
+```
+
+
+* On `ReturnTransition` start a `CircularReveal` animation takes place hiding the background viewgroup.
+
+```java
+        returnTransition.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+                animateRevealHide(bgViewGroup);
+            }
+
+            @Override
+            public void onTransitionEnd(Transition transition) {}
+
+            @Override
+            public void onTransitionCancel(Transition transition) {}
+
+            @Override
+            public void onTransitionPause(Transition transition) {}
+
+            @Override
+            public void onTransitionResume(Transition transition) {}
+        });
+```
+
+
+* After 1 second, `CircularReveal` has finished and `SharedElementReturnTransition` gets executed producing orange box animation.
 
 
 

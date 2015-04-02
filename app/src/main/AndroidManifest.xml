@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".DetailActivity1"/>
         <activity android:name=".DetailActivity2"/>
+        <activity android:name=".DetailActivity3"/>
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     private View squareRed;
     private View squareBlue;
     private View squareGreen;
-    private View squareYellow;
+    private View squareOrange;
 
 
     @Override
@@ -49,8 +49,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, DetailActivity1.class);
-                ActivityOptions transitionActivityOptions =
-                        ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
                 startActivity(i, transitionActivityOptions.toBundle());
             }
         });
@@ -77,11 +76,23 @@ public class MainActivity extends ActionBarActivity {
                 setViewWidth(squareRed, 500);
                 setViewWidth(squareBlue, 500);
                 setViewWidth(squareGreen, 500);
-                setViewWidth(squareYellow, 500);
+                setViewWidth(squareOrange, 500);
             }
         });
 
-        squareYellow = findViewById(R.id.square_yellow);
+        squareOrange = findViewById(R.id.square_orange);
+        squareOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, DetailActivity3.class);
+
+                View sharedView = squareOrange;
+                String transitionName = getString(R.string.square_orange_name);
+
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
+                startActivity(i, transitionActivityOptions.toBundle());
+            }
+        });
     }
 
     private void setViewWidth(View view, int x) {

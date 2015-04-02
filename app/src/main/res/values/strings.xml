@@ -6,4 +6,6 @@
 
     <string name="square_red_name">square_red</string>
     <string name="square_blue_name">square_blue</string>
+    <string name="square_green_name">square_green</string>
+    <string name="square_orange_name">square_orange</string>
 </resources>
