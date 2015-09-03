@@ -1,6 +1,35 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+gen-external-apklibs/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# intellij & maven
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
 .DS_Store
-/build
+log/
+target/
+tmp/
+out/
+
+# Gradle
+.gradle
+build/**
+libraries/build/**
