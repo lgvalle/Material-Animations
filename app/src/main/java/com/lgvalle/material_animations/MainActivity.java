@@ -5,7 +5,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.TransitionManager;
@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private ViewGroup sceneRoot;
     private View squareRed;

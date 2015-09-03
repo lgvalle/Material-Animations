@@ -5,13 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class DetailActivity3 extends ActionBarActivity {
+public class DetailActivity3 extends AppCompatActivity {
 
     private static final long ANIM_DURATION = 1000;
     private View bgViewGroup;
