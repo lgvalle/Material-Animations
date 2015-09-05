@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +31,17 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
 
     @Override
     public void onBindViewHolder(final SamplesViewHolder viewHolder, final int position) {
-        viewHolder.binding.setSample(samples.get(position));
+        final Sample sample = samples.get(position);
+        viewHolder.binding.setSample(sample);
         viewHolder.binding.sampleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (position) {
                     case 0:
-                        transitionToActivity(DetailActivity1.class);
+                        transitionToActivity(DetailActivity1.class, sample);
                         break;
                     case 1:
-                        transitionToActivity(DetailActivity2.class, viewHolder, R.string.square_blue_name);
+                        transitionToActivity(DetailActivity2.class, viewHolder, sample, R.string.square_blue_name);
                         break;
 
                     case 2:
@@ -53,23 +55,29 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
                         break;
 
                     case 3:
-                        transitionToActivity(DetailActivity3.class, viewHolder, R.string.square_orange_name);
+                        transitionToActivity(DetailActivity3.class, viewHolder, sample, R.string.square_orange_name);
                         break;
                 }
             }
         });
     }
 
-    private void transitionToActivity(Class target) {
-        Intent i = new Intent(activity, target);
-        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity);
-        activity.startActivity(i, transitionActivityOptions.toBundle());
+    private void transitionToActivity(Class target, Sample sample) {
+        final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, true);
+        startActivity(target, pairs, sample);
     }
 
-    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, int transitionName) {
+
+    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample, int transitionName) {
+        final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
+                new Pair<>(viewHolder.binding.sampleIcon, activity.getString(transitionName)));
+        startActivity(target, pairs, sample);
+    }
+
+    private void startActivity(Class target, Pair<View, String>[] pairs, Sample sample) {
         Intent i = new Intent(activity, target);
-        View sharedView = viewHolder.binding.sampleIcon;
-        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, sharedView, activity.getString(transitionName));
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pairs);
+        i.putExtra("sample", sample);
         activity.startActivity(i, transitionActivityOptions.toBundle());
     }
 
