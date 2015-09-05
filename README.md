@@ -143,7 +143,7 @@ In our example, if we do:
 
     private void setupWindowAnimations() {
         Explode explode = new Explode();
-        expl.setDuration(2000);
+        explode.setDuration(2000);
         getWindow().setEnterTransition(explode);
         
         Fade fade = new Fade();
