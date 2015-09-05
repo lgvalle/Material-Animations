@@ -7,8 +7,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Explode;
-import android.transition.Fade;
+import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,12 +28,20 @@ public class MainActivity extends AppCompatActivity {
         setupLayout();
     }
 
+    private void setupWindowAnimations() {
+        // ReEnter transition is executed when returning to this activity
+        Slide reenterTransition = new Slide();
+        reenterTransition.setSlideEdge(Gravity.START);
+        reenterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        getWindow().setReenterTransition(reenterTransition);
+    }
+
     private void setupSamples() {
         samples = Arrays.asList(
-                new Sample(getSampleDrawable(), Color.RED, "Exit/Enter Transition Sample"),
-                new Sample(getSampleDrawable(), Color.BLUE, "Shared element Transition Sample"),
-                new Sample(getSampleDrawable(), Color.GREEN, "View animations Sample"),
-                new Sample(getSampleDrawable(), Color.YELLOW, "Circular Reveal Transition Sample")
+                new Sample(Color.RED, "Exit/Enter Transition Sample"),
+                new Sample(Color.BLUE, "Shared element Transition Sample"),
+                new Sample(Color.GREEN, "View animations Sample"),
+                new Sample(Color.YELLOW, "Circular Reveal Transition Sample")
         );
     }
 
@@ -40,17 +49,10 @@ public class MainActivity extends AppCompatActivity {
         return ContextCompat.getDrawable(this, R.drawable.circle_24dp);
     }
 
-
-    private void setupWindowAnimations() {
-        Explode explode = new Explode();
-        explode.setDuration(2000);
-        //getWindow().setExitTransition(explode);
-
-        Fade fade = new Fade();
-        //getWindow().setReenterTransition(fade);
-    }
-
     private void setupLayout() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sample_list);
         recyclerView.setHasFixedSize(true);
