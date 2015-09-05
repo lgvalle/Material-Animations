@@ -11,6 +11,6 @@
 
     <dimen name="size_icon_toolbar">40dp</dimen>
 
-    <integer name="anim_duration_long">1000</integer>
-    <integer name="anim_duration_medium">500</integer>
+    <integer name="anim_duration_long">500</integer>
+    <integer name="anim_duration_medium">300</integer>
 </resources>

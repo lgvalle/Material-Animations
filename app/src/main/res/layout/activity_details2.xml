@@ -19,16 +19,8 @@
             style="@style/MaterialAnimations.TextAppearance.Title"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/material_animations_primary"
+            android:background="?android:colorPrimary"
             android:elevation="@dimen/elevation_header">
-
-            <ImageView
-                android:id="@+id/toolbar_sample_icon"
-                android:layout_width="@dimen/size_icon_toolbar"
-                android:layout_height="@dimen/size_icon_toolbar"
-                android:layout_marginEnd="@dimen/spacing_double"
-                android:src="@drawable/circle_24dp"
-                app:colorTint="@{details2Sample.color}" />
 
             <TextView
                 android:id="@+id/title"

@@ -17,9 +17,11 @@ public class DetailActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         ActivityDetails1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_details1);
         Sample sample = (Sample) getIntent().getExtras().getSerializable("sample");
         binding.setDetails1Sample(sample);
+
 
         setupWindowAnimations();
         setupLayout();

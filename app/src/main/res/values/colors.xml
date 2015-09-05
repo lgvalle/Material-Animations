@@ -35,7 +35,7 @@
     <color name="theme_blue_background">#84ffff</color>
     <color name="theme_blue_primary">#03a9f4</color>
     <color name="theme_blue_accent">#ff193a</color>
-    <color name="theme_blue_text">@color/text_light</color>
+    <color name="theme_blue_text">@color/text_dark</color>
     <color name="theme_blue_primary_dark">#038dcc</color>
 
     <color name="theme_green_background">#b9f6ca</color>
@@ -64,9 +64,8 @@
 
     <color name="green">#00e676</color>
     <color name="red">#ff5252</color>
-    <color name="light_grey">#f5f5f5</color>
+    <color name="light_grey">#E0E0E0</color>
 
 
-    <color name="accent_material_dark">#ffcf40</color>
 
 </resources>
