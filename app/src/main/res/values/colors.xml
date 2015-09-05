@@ -25,6 +25,12 @@
     <color name="text_light">@android:color/white</color>
     <color name="text_dark">#616161</color>
 
+    <color name="sample_red">#ff4444</color>
+    <color name="sample_blue">#33b5e5</color>
+    <color name="sample_green">#669900</color>
+    <color name="sample_yellow">#ff8800</color>
+
+
     <!-- theme colors -->
     <color name="theme_blue_background">#84ffff</color>
     <color name="theme_blue_primary">#03a9f4</color>

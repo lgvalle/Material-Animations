@@ -1,6 +1,8 @@
 package com.lgvalle.material_animations;
 
 import android.databinding.BindingAdapter;
+import android.graphics.PorterDuff;
+import android.support.annotation.ColorRes;
 import android.widget.ImageView;
 
 import java.io.Serializable;
@@ -13,14 +15,14 @@ public class Sample implements Serializable {
     int color;
     String name;
 
-    public Sample(int color, String name) {
+    public Sample(@ColorRes int color, String name) {
         this.color = color;
         this.name = name;
     }
 
     @BindingAdapter("bind:colorFilter")
-    public static void setColorFilter(ImageView view, int color) {
-        view.setColorFilter(color);
+    public static void setColorFilter(ImageView view, @ColorRes int color) {
+        view.setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     public String getName() {

@@ -1,7 +1,5 @@
 package com.lgvalle.material_animations;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -38,15 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupSamples() {
         samples = Arrays.asList(
-                new Sample(Color.RED, "Exit/Enter Transition Sample"),
-                new Sample(Color.BLUE, "Shared element Transition Sample"),
-                new Sample(Color.GREEN, "View animations Sample"),
-                new Sample(Color.YELLOW, "Circular Reveal Transition Sample")
+                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Exit/Enter Transition Sample"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared element Transition Sample"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations Sample"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Transition Sample")
         );
-    }
-
-    private Drawable getSampleDrawable() {
-        return ContextCompat.getDrawable(this, R.drawable.circle_24dp);
     }
 
     private void setupLayout() {
