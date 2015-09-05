@@ -1,22 +1,72 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MaterialAnimations.TextAppearance.Title"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/material_animations_primary"
+        android:elevation="@dimen/elevation_header">
+
+        <ImageView
+            android:id="@+id/toolbar_sample_icon"
+            android:layout_width="@dimen/size_icon_toolbar"
+            android:layout_height="@dimen/size_icon_toolbar"
+            android:layout_marginEnd="@dimen/spacing_double"
+            android:src="@drawable/circle_24dp"
+            android:transitionName="@string/square_red_name" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:text="@string/app_name" />
+
+    </android.support.v7.widget.Toolbar>
+
     <View
-        android:layout_width="150dp"
         android:id="@+id/square_red"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_margin="10dp"
-        android:transitionName="@string/square_red_name"
-        android:layout_centerInParent="true"
-        android:background="@android:color/holo_red_light"
-        android:layout_height="150dp" />
+        android:background="@android:color/holo_red_light" />
+
+    <TextView
+        android:id="@+id/sample1_title"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sample 1" />
+
+    <TextView
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:text="Sample Activity demonstrating how to add enter and exit transitions programmatically" />
+
+    <Button
+        android:id="@+id/sample1_button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:text="Exit (setting return transition)" />
+
+    <Button
+        android:id="@+id/sample1_button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:text="Exit (without setting return transition)" />
 
 
-</RelativeLayout>
+</LinearLayout>

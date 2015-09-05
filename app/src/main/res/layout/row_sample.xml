@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:padding="@dimen/spacing_double">
 
         <ImageView
             android:id="@+id/sample_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@{sample.icon}"
+            android:src="@drawable/circle_24dp"
             app:colorFilter="@{sample.color}" />
 
         <TextView
