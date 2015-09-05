@@ -13,17 +13,15 @@ import com.lgvalle.material_animations.databinding.ActivityDetails1Binding;
 
 public class DetailActivity1 extends AppCompatActivity {
 
-    private Sample sample;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ActivityDetails1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_details1);
-        sample = (Sample) getIntent().getExtras().getSerializable("sample");
+        Sample sample = (Sample) getIntent().getExtras().getSerializable("sample");
         binding.setDetails1Sample(sample);
-        setupLayout();
+
         setupWindowAnimations();
+        setupLayout();
     }
 
     private void setupWindowAnimations() {
@@ -41,7 +39,6 @@ public class DetailActivity1 extends AppCompatActivity {
                 finishAfterTransition();
             }
         });
-
         findViewById(R.id.sample1_button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

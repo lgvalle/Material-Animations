@@ -14,25 +14,23 @@
         android:id="@+id/sample_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="@dimen/spacing_double">
 
         <ImageView
             android:id="@+id/sample_icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            style="@style/MaterialAnimations.Icon.Small"
             android:src="@drawable/circle_24dp"
             app:colorFilter="@{sample.color}" />
 
         <TextView
             android:id="@+id/sample_name"
-            tools:text="View animations sample"
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_height="wrap_content"
-            android:text="@{sample.name}" />
+            android:text="@{sample.name}"
+            tools:text="View animations sample" />
 
     </LinearLayout>
 </layout>

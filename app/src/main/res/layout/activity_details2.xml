@@ -1,60 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/MaterialAnimations.TextAppearance.Title"
+    <data>
+
+        <variable
+            name="details2Sample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/material_animations_primary"
-        android:elevation="@dimen/elevation_header">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/material_animations_primary"
+            android:elevation="@dimen/elevation_header">
+
+            <ImageView
+                android:id="@+id/toolbar_sample_icon"
+                android:layout_width="@dimen/size_icon_toolbar"
+                android:layout_height="@dimen/size_icon_toolbar"
+                android:layout_marginEnd="@dimen/spacing_double"
+                android:src="@drawable/circle_24dp"
+                app:colorFilter="@{details1Sample.color}" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="@string/app_name" />
+
+        </android.support.v7.widget.Toolbar>
 
         <ImageView
-            android:id="@+id/toolbar_sample_icon"
-            android:layout_width="@dimen/size_icon_toolbar"
-            android:layout_height="@dimen/size_icon_toolbar"
+            android:id="@+id/square_red"
+            style="@style/MaterialAnimations.Icon.Big"
             android:src="@drawable/circle_24dp"
-            android:layout_marginEnd="@dimen/spacing_double"/>
+            app:colorFilter="@{details1Sample.color}" />
 
         <TextView
-            android:id="@+id/title"
-            style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+            style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:text="@string/app_name" />
+            android:text="Activity Detail 2" />
 
-    </android.support.v7.widget.Toolbar>
+        <TextView
+            style="@style/MaterialAnimations.Text.Body"
+            android:text="This is the content body text of the activity" />
 
-    <View
-        android:layout_width="150dp"
-        android:id="@+id/big_square_blue"
-        android:layout_margin="10dp"
-        android:transitionName="@string/square_blue_name"
-        android:layout_centerInParent="true"
-        android:background="@android:color/holo_blue_light"
-        android:layout_height="150dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Activity Detail 2"
-        style="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_centerHorizontal="true"
-
-        android:layout_above="@+id/big_square_blue"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="This is the content body text of the activity"
-        style="@style/Base.TextAppearance.AppCompat.Medium"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/big_square_blue"
-        android:layout_height="wrap_content" />
-
-
-</RelativeLayout>
+    </LinearLayout>
+</layout>

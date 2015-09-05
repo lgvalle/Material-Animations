@@ -44,9 +44,7 @@
 
         <ImageView
             android:id="@+id/square_red"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
+            style="@style/MaterialAnimations.Icon.Big"
             android:src="@drawable/circle_24dp"
             app:colorFilter="@{details1Sample.color}" />
 
@@ -58,24 +56,17 @@
             android:text="Sample 1" />
 
         <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_normal"
+            style="@style/MaterialAnimations.Text.Body"
             android:text="Sample Activity demonstrating how to add enter and exit transitions programmatically" />
 
         <Button
             android:id="@+id/sample1_button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_normal"
-            android:text="Exit (setting return transition)" />
+            android:text="Exit (setting return transition)"
+            style="@style/MaterialAnimations.Button" />
 
         <Button
             android:id="@+id/sample1_button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_normal"
+            style="@style/MaterialAnimations.Button"
             android:text="Exit (without setting return transition)" />
 
 
