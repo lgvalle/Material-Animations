@@ -1,22 +1,19 @@
 package com.lgvalle.material_animations;
 
 import android.databinding.BindingAdapter;
-import android.graphics.drawable.Drawable;
-import android.view.View;
 import android.widget.ImageView;
+
+import java.io.Serializable;
 
 /**
  * Created by lgvalle on 04/09/15.
  */
-public class Sample {
+public class Sample implements Serializable {
 
     int color;
     String name;
-    Drawable icon;
-    View.OnClickListener onClickListener;
 
-    public Sample(Drawable icon, int color, String name) {
-        this.icon = icon;
+    public Sample(int color, String name) {
         this.color = color;
         this.name = name;
     }
@@ -30,15 +27,9 @@ public class Sample {
         return name;
     }
 
-    public Drawable getIcon() {
-        return icon;
-    }
-
     public int getColor() {
         return color;
     }
 
-    public View.OnClickListener getOnClickListener() {
-        return onClickListener;
-    }
+
 }
