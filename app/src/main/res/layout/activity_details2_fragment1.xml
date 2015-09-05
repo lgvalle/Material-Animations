@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/square_blue"
+        style="@style/MaterialAnimations.Icon.Big"
+        android:src="@drawable/circle_24dp"
+        android:transitionName="@string/square_blue_name" />
+
+    <TextView
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity Detail 2. Fragment 1" />
+
+    <TextView
+        style="@style/MaterialAnimations.Text.Body"
+        android:text="This is the content body text of the activity" />
+
+    <Button
+        android:id="@+id/sample2_button1"
+        android:text="Next (Overlap transition = false)"
+        style="@style/MaterialAnimations.Button" />
+
+    <Button
+        android:id="@+id/sample2_button2"
+        android:text="Next (Overlap transition =  true)"
+        style="@style/MaterialAnimations.Button" />
+
+</LinearLayout>

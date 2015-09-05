@@ -3,6 +3,7 @@ package com.lgvalle.material_animations;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Visibility;
@@ -22,11 +23,13 @@ public class DetailActivity1 extends AppCompatActivity {
 
         setupWindowAnimations();
         setupLayout();
+        setupToolbar();
     }
 
     private void setupWindowAnimations() {
         Visibility enterTransition = buildEnterTransition();
         getWindow().setEnterTransition(enterTransition);
+        getWindow().setAllowEnterTransitionOverlap(false);
     }
 
     private void setupLayout() {
@@ -49,6 +52,19 @@ public class DetailActivity1 extends AppCompatActivity {
                 finishAfterTransition();
             }
         });
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private Visibility buildEnterTransition() {

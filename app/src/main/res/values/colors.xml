@@ -17,8 +17,8 @@
 <resources>
     <color name="touch_effect">#9ccc</color>
 
-    <color name="material_animations_primary">#00bad2</color>
-    <color name="material_animations_primary_dark">#00a3b8</color>
+    <color name="material_animations_primary">#039BE5</color>
+    <color name="material_animations_primary_dark">#0277BD</color>
     <color name="material_animations_blank">#424242</color>
     <color name="material_animations_accent">#3F51B5</color>
 
@@ -65,5 +65,8 @@
     <color name="green">#00e676</color>
     <color name="red">#ff5252</color>
     <color name="light_grey">#f5f5f5</color>
+
+
+    <color name="accent_material_dark">#ffcf40</color>
 
 </resources>

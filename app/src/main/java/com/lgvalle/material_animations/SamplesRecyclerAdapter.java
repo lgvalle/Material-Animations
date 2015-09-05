@@ -41,7 +41,7 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
                         transitionToActivity(DetailActivity1.class, sample);
                         break;
                     case 1:
-                        transitionToActivity(DetailActivity2.class, viewHolder, sample, R.string.square_blue_name);
+                        transitionToActivity(DetailActivity2.class, viewHolder, sample);
                         break;
 
                     case 2:
@@ -71,6 +71,13 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
     private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample, int transitionName) {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
                 new Pair<>(viewHolder.binding.sampleIcon, activity.getString(transitionName)));
+        startActivity(target, pairs, sample);
+    }
+
+    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample) {
+        final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
+                new Pair<>(viewHolder.binding.sampleIcon, activity.getString(R.string.square_blue_name)),
+                new Pair<>(viewHolder.binding.sampleName, activity.getString(R.string.sample_blue_title)));
         startActivity(target, pairs, sample);
     }
 

@@ -22,7 +22,7 @@
             android:id="@+id/sample_icon"
             style="@style/MaterialAnimations.Icon.Small"
             android:src="@drawable/circle_24dp"
-            app:colorFilter="@{sample.color}" />
+            app:colorTint="@{sample.color}" />
 
         <TextView
             android:id="@+id/sample_name"

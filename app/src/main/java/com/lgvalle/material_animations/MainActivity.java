@@ -28,18 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupWindowAnimations() {
         // ReEnter transition is executed when returning to this activity
-        Slide reenterTransition = new Slide();
-        reenterTransition.setSlideEdge(Gravity.START);
-        reenterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-        getWindow().setReenterTransition(reenterTransition);
+        Slide slideTransition = new Slide();
+        slideTransition.setSlideEdge(Gravity.START);
+        slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        getWindow().setReenterTransition(slideTransition);
+        getWindow().setExitTransition(slideTransition);
     }
 
     private void setupSamples() {
         samples = Arrays.asList(
-                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Exit/Enter Transition Sample"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared element Transition Sample"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations Sample"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Transition Sample")
+                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Exit/Enter Transition"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared element Transition"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Transition")
         );
     }
 

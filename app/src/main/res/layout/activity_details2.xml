@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/size_icon_toolbar"
                 android:layout_marginEnd="@dimen/spacing_double"
                 android:src="@drawable/circle_24dp"
-                app:colorFilter="@{details1Sample.color}" />
+                app:colorTint="@{details2Sample.color}" />
 
             <TextView
                 android:id="@+id/title"
@@ -36,25 +36,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
-                android:text="@string/app_name" />
+                android:text="@{details2Sample.name}"
+                android:transitionName="@string/sample_blue_title" />
 
         </android.support.v7.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/square_red"
-            style="@style/MaterialAnimations.Icon.Big"
-            android:src="@drawable/circle_24dp"
-            app:colorFilter="@{details1Sample.color}" />
-
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Activity Detail 2" />
-
-        <TextView
-            style="@style/MaterialAnimations.Text.Body"
-            android:text="This is the content body text of the activity" />
+        <FrameLayout
+            android:id="@+id/sample2_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

@@ -10,13 +10,11 @@
         <item name="android:statusBarColor">@color/material_animations_primary_dark</item>
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
         <item name="android:titleTextAppearance">@style/MaterialAnimations.TextAppearance.Title
         </item>
         <item name="android:windowBackground">@color/light_grey</item>
-    </style>
-
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
     </style>
 
     <style name="MaterialAnimations.TextAppearance.Title" parent="android:TextAppearance.Material.Title">

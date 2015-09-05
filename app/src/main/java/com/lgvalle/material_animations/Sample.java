@@ -1,8 +1,8 @@
 package com.lgvalle.material_animations;
 
 import android.databinding.BindingAdapter;
-import android.graphics.PorterDuff;
 import android.support.annotation.ColorRes;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.widget.ImageView;
 
 import java.io.Serializable;
@@ -20,9 +20,10 @@ public class Sample implements Serializable {
         this.name = name;
     }
 
-    @BindingAdapter("bind:colorFilter")
-    public static void setColorFilter(ImageView view, @ColorRes int color) {
-        view.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+    @BindingAdapter("bind:colorTint")
+    public static void setColorTint(ImageView view, @ColorRes int color) {
+        DrawableCompat.setTint(view.getDrawable(), color);
+        //view.setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     public String getName() {
