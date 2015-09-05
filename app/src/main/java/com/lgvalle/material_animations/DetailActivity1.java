@@ -1,26 +1,29 @@
 package com.lgvalle.material_animations;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Visibility;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
 
-public class DetailActivity1 extends BaseDetailSampleActivity {
+import com.lgvalle.material_animations.databinding.ActivityDetails1Binding;
+
+public class DetailActivity1 extends AppCompatActivity {
+
+    private Sample sample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ActivityDetails1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_details1);
+        sample = (Sample) getIntent().getExtras().getSerializable("sample");
+        binding.setDetails1Sample(sample);
         setupLayout();
         setupWindowAnimations();
-    }
-
-    @Override
-    int getContentView() {
-        return R.layout.activity_details1;
     }
 
     private void setupWindowAnimations() {
@@ -29,9 +32,6 @@ public class DetailActivity1 extends BaseDetailSampleActivity {
     }
 
     private void setupLayout() {
-        ImageView sampleIcon = (ImageView) findViewById(R.id.toolbar_sample_icon);
-        sampleIcon.setColorFilter(sample.color);
-
         findViewById(R.id.sample1_button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
