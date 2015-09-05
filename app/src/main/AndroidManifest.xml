@@ -5,7 +5,7 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/MaterialAnimations" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >

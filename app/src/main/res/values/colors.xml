@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2015 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <color name="touch_effect">#9ccc</color>
+
+    <color name="material_animations_primary">#00bad2</color>
+    <color name="material_animations_primary_dark">#00a3b8</color>
+    <color name="material_animations_blank">#424242</color>
+    <color name="material_animations_accent">#3F51B5</color>
+
+    <color name="text_light">@android:color/white</color>
+    <color name="text_dark">#616161</color>
+
+    <!-- theme colors -->
+    <color name="theme_blue_background">#84ffff</color>
+    <color name="theme_blue_primary">#03a9f4</color>
+    <color name="theme_blue_accent">#ff193a</color>
+    <color name="theme_blue_text">@color/text_light</color>
+    <color name="theme_blue_primary_dark">#038dcc</color>
+
+    <color name="theme_green_background">#b9f6ca</color>
+    <color name="theme_green_primary">#1de9b6</color>
+    <color name="theme_green_accent">#e919ff</color>
+    <color name="theme_green_text">@color/text_dark</color>
+    <color name="theme_green_primary_dark">#19cc9f</color>
+
+    <color name="theme_purple_background">#b388ff</color>
+    <color name="theme_purple_primary">#7e57c2</color>
+    <color name="theme_purple_accent">#ff9419</color>
+    <color name="theme_purple_text">@color/text_light</color>
+    <color name="theme_purple_primary_dark">#6c4aa6</color>
+
+    <color name="theme_red_background">#ff8a80</color>
+    <color name="theme_red_primary">#ff5252</color>
+    <color name="theme_red_accent">#fffc19</color>
+    <color name="theme_red_text">@color/text_light</color>
+    <color name="theme_red_primary_dark">#e64a4a</color>
+
+    <color name="theme_yellow_background">#ffff8d</color>
+    <color name="theme_yellow_primary">#ffeb3b</color>
+    <color name="theme_yellow_accent">#19dcff</color>
+    <color name="theme_yellow_text">@color/text_dark</color>
+    <color name="theme_yellow_primary_dark">#e6d335</color>
+
+    <color name="green">#00e676</color>
+    <color name="red">#ff5252</color>
+    <color name="light_grey">#f5f5f5</color>
+
+</resources>
