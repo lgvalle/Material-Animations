@@ -47,6 +47,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/spacing_normal</item>
+        <item name="android:padding">@dimen/spacing_normal</item>
+    </style>
+
+    <style name="MaterialAnimations.Text.Section" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="MaterialAnimations.Icon">

@@ -8,15 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-/**
- * Created by lgvalle on 05/09/15.
- */
 public class Detail2Fragment2 extends Fragment {
 
     public static Detail2Fragment2 newInstance(Sample sample) {
-
         Bundle args = new Bundle();
-
         args.putSerializable("sample", sample);
         Detail2Fragment2 fragment = new Detail2Fragment2();
         fragment.setArguments(args);

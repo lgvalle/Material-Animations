@@ -16,7 +16,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailActivity1"
+            android:name=".TransitionActivity1"
+            android:theme="@style/MaterialAnimations.Red" />
+        <activity
+            android:name=".TransitionActivity2"
+            android:theme="@style/MaterialAnimations.Red" />
+        <activity
+            android:name=".TransitionActivity3"
             android:theme="@style/MaterialAnimations.Red" />
         <activity
             android:name=".DetailActivity2"

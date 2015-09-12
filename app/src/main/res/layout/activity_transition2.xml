@@ -4,16 +4,16 @@
     <data>
 
         <variable
-            name="details3Sample"
+            name="transition2Sample"
             type="com.lgvalle.material_animations.Sample" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/sample3_root"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -29,47 +29,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
-                android:text="@{details3Sample.name}" />
+                android:text="@{transition2Sample.name}" />
 
         </android.support.v7.widget.Toolbar>
 
         <ImageView
-            android:id="@+id/square_green"
+            android:id="@+id/square_red"
             style="@style/MaterialAnimations.Icon.Big"
             android:src="@drawable/circle_24dp"
-            app:colorTint="@{details3Sample.color}" />
+            app:colorTint="@{transition2Sample.color}" />
 
         <TextView
-            android:id="@+id/sample_title"
+            android:id="@+id/activity_title"
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sample 3" />
+            android:text="Explode" />
 
         <TextView
             style="@style/MaterialAnimations.Text.Body"
-            android:text="Sample Activity demonstrating how to use TransitionManager to animate different view properties" />
+            android:text="@string/medium_text" />
 
         <Button
-            android:id="@+id/sample3_button1"
+            android:id="@+id/exit_button"
             style="@style/MaterialAnimations.Button"
-            android:text="Change size" />
-
-        <Button
-            android:id="@+id/sample3_button2"
-            style="@style/MaterialAnimations.Button"
-            android:text="Change position" />
-
-
-        <Button
-            android:id="@+id/sample3_button3"
-            style="@style/MaterialAnimations.Button"
-            android:text="Change color" />
-
-        <Button
-            android:id="@+id/sample3_button4"
-            style="@style/MaterialAnimations.Button"
-            android:text="Fade" />
+            android:text="Exit" />
 
 
     </LinearLayout>

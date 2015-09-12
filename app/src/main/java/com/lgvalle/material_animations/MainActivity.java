@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,14 +18,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
         setupWindowAnimations();
         setupSamples();
+        setupToolbar();
         setupLayout();
     }
 
     private void setupWindowAnimations() {
-        // ReEnter transition is executed when returning to this activity
+        // Re-enter transition is executed when returning to this activity
         Slide slideTransition = new Slide();
         slideTransition.setSlideEdge(Gravity.START);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
@@ -37,18 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupSamples() {
         samples = Arrays.asList(
-                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Exit/Enter Transition"),
+                new Sample(ContextCompat.getColor(this, R.color.sample_red), "Transitions"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared element Transition"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Transition")
+                new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Animation")
         );
     }
 
     private void setupLayout() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sample_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -56,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(samplesRecyclerAdapter);
     }
 
-    private void setViewWidth(View view, int x) {
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.width = x;
-        view.setLayoutParams(params);
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 }

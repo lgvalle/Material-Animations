@@ -38,20 +38,14 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
             public void onClick(View v) {
                 switch (position) {
                     case 0:
-                        transitionToActivity(DetailActivity1.class, sample);
+                        transitionToActivity(TransitionActivity1.class, sample);
                         break;
                     case 1:
                         transitionToActivity(DetailActivity2.class, viewHolder, sample);
                         break;
 
                     case 2:
-                        /*
-                        TransitionManager.beginDelayedTransition(sceneRoot);
-                        setViewWidth(squareRed, 500);
-                        setViewWidth(squareBlue, 500);
-                        setViewWidth(squareGreen, 500);
-                        setViewWidth(squareOrange, 500);
-                        */
+                        transitionToActivity(DetailActivity3.class, sample);
                         break;
 
                     case 3:

@@ -40,8 +40,8 @@ public class TransitionHelper {
      *        participant.
      * @return All transition participants.
      */
-    public static Pair<View, String>[] createSafeTransitionParticipants(@NonNull Activity activity,
-            boolean includeStatusBar, @Nullable Pair... otherParticipants) {
+    public static Pair[] createSafeTransitionParticipants(@NonNull Activity activity,
+                                                          boolean includeStatusBar, @Nullable Pair... otherParticipants) {
         // Avoid system UI glitches as described here:
         // https://plus.google.com/+AlexLockwood/posts/RPtwZ5nNebb
         View decor = activity.getWindow().getDecorView();
