@@ -1,9 +1,9 @@
 package com.lgvalle.material_animations;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import android.transition.Fade;
 import android.transition.TransitionManager;
 import android.view.Gravity;
 import android.view.View;
@@ -11,30 +11,34 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lgvalle.material_animations.databinding.ActivityDetails3Binding;
+import com.lgvalle.material_animations.databinding.ActivityAnimations1Binding;
 
-public class DetailActivity3 extends BaseDetailActivity {
+public class AnimationsActivity1 extends BaseDetailActivity {
 
     private ImageView square;
     private ViewGroup viewRoot;
     private boolean sizeChanged;
     private int savedWidth;
     private boolean positionChanged;
-    private boolean colorChanged;
     private Sample sample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindData();
+        setupWindowAnimations();
         setupLayout();
         setupToolbar();
     }
 
+    private void setupWindowAnimations() {
+        getWindow().setReenterTransition(new Fade());
+    }
+
     private void bindData() {
-        ActivityDetails3Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_details3);
-        sample = (Sample) getIntent().getExtras().getSerializable("sample");
-        binding.setDetails3Sample(sample);
+        ActivityAnimations1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_animations1);
+        sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        binding.setAnimationsSample(sample);
     }
 
     private void setupLayout() {
@@ -56,7 +60,9 @@ public class DetailActivity3 extends BaseDetailActivity {
         findViewById(R.id.sample3_button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor();
+                Intent i = new Intent(AnimationsActivity1.this, AnimationsActivity2.class);
+                i.putExtra(EXTRA_SAMPLE, sample);
+                transitionTo(i);
             }
         });
     }
@@ -88,16 +94,6 @@ public class DetailActivity3 extends BaseDetailActivity {
         square.setLayoutParams(lp);
     }
 
-    private void changeColor() {
-        TransitionManager.beginDelayedTransition(viewRoot);
-
-        if (colorChanged) {
-            DrawableCompat.setTint(square.getDrawable(), sample.color);
-        } else {
-            DrawableCompat.setTint(square.getDrawable(), Color.RED);
-        }
-        colorChanged = !colorChanged;
-    }
 
 
 }

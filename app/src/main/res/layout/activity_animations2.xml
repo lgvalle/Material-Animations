@@ -1,0 +1,82 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="animationsSample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/sample3_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:colorPrimary"
+            android:elevation="@dimen/elevation_header">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="Scenes" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/scene_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/buttons_group"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/sample3_button1"
+                    style="@style/MaterialAnimations.Button.Scaled"
+                    android:layout_weight="1"
+                    android:text="Scene one" />
+
+                <Button
+                    android:id="@+id/sample3_button2"
+                    style="@style/MaterialAnimations.Button.Scaled"
+                    android:layout_weight="1"
+                    android:text="Scene two" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/sample3_button3"
+                    style="@style/MaterialAnimations.Button.Scaled"
+                    android:layout_weight="1"
+                    android:text="Scene three" />
+
+                <Button
+                    android:id="@+id/sample3_button4"
+                    style="@style/MaterialAnimations.Button.Scaled"
+                    android:layout_weight="1"
+                    android:text="Scene four" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

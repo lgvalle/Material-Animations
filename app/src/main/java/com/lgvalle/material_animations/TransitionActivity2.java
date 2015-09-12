@@ -35,7 +35,7 @@ public class TransitionActivity2 extends BaseDetailActivity {
         if (type == TYPE_PROGRAMMATICALLY) {
             transition = buildEnterTransition();
         }  else {
-            transition = TransitionInflater.from(this).inflateTransition(R.transition.transition_explode);
+            transition = TransitionInflater.from(this).inflateTransition(R.transition.explode);
         }
         getWindow().setEnterTransition(transition);
     }

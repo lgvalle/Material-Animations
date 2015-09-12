@@ -3,8 +3,6 @@ package com.lgvalle.material_animations;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Visibility;
@@ -13,8 +11,6 @@ import android.view.View;
 import com.lgvalle.material_animations.databinding.ActivityTransition1Binding;
 
 public class TransitionActivity1 extends BaseDetailActivity {
-
-
     private Sample sample;
 
     @Override
@@ -43,6 +39,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TransitionActivity1.this, TransitionActivity2.class);
+                i.putExtra(EXTRA_SAMPLE, sample);
                 i.putExtra(EXTRA_TYPE, TYPE_PROGRAMMATICALLY);
                 transitionTo(i);
             }
@@ -52,6 +49,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TransitionActivity1.this, TransitionActivity2.class);
+                i.putExtra(EXTRA_SAMPLE, sample);
                 i.putExtra(EXTRA_TYPE, TYPE_XML);
                 transitionTo(i);
             }
@@ -61,6 +59,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TransitionActivity1.this, TransitionActivity3.class);
+                i.putExtra(EXTRA_SAMPLE, sample);
                 i.putExtra(EXTRA_TYPE, TYPE_PROGRAMMATICALLY);
                 transitionTo(i);
             }
@@ -70,6 +69,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TransitionActivity1.this, TransitionActivity3.class);
+                i.putExtra(EXTRA_SAMPLE, sample);
                 i.putExtra(EXTRA_TYPE, TYPE_XML);
                 transitionTo(i);
             }
@@ -94,14 +94,6 @@ public class TransitionActivity1 extends BaseDetailActivity {
                 finishAfterTransition();
             }
         });
-    }
-
-    @SuppressWarnings("unchecked")
-    private void transitionTo(Intent i) {
-        i.putExtra(EXTRA_SAMPLE, sample);
-        final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(TransitionActivity1.this, true);
-        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(TransitionActivity1.this, pairs);
-        startActivity(i, transitionActivityOptions.toBundle());
     }
 
     private Visibility buildEnterTransition() {

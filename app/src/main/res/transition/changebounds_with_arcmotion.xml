@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/anim_duration_very_long">
+    <changeBounds>
+        <arcMotion android:minimumHorizontalAngle="15"
+            android:minimumVerticalAngle="0"
+            android:maximumAngle="90"/>
+    </changeBounds>
+</transitionSet>

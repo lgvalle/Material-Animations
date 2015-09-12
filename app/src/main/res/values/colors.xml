@@ -39,10 +39,10 @@
     <color name="theme_blue_primary_dark">#038dcc</color>
 
     <color name="theme_green_background">#b9f6ca</color>
-    <color name="theme_green_primary">#1de9b6</color>
+    <color name="theme_green_primary">#669900</color>
     <color name="theme_green_accent">#e919ff</color>
     <color name="theme_green_text">@color/text_dark</color>
-    <color name="theme_green_primary_dark">#19cc9f</color>
+    <color name="theme_green_primary_dark">#558B2F</color>
 
     <color name="theme_purple_background">#b388ff</color>
     <color name="theme_purple_primary">#7e57c2</color>

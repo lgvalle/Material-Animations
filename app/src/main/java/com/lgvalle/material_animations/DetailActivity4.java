@@ -15,7 +15,7 @@ public class DetailActivity4 extends BaseDetailActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details3);
+        setContentView(R.layout.activity_animations1);
         setupLayout();
         setupWindowAnimations();
     }

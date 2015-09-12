@@ -35,6 +35,15 @@
         <item name="android:colorAccent">@color/theme_blue_accent</item>
     </style>
 
+    <style name="MaterialAnimations.Green" parent="MaterialAnimations">
+        <item name="android:colorPrimary">@color/theme_green_primary</item>
+        <item name="android:colorPrimaryDark">@color/theme_green_primary</item>
+        <item name="android:textColorPrimary">@color/theme_green_text</item>
+        <item name="android:statusBarColor">@color/theme_green_primary_dark</item>
+        <item name="android:windowBackground">@color/theme_green_background</item>
+        <item name="android:colorAccent">@color/theme_green_accent</item>
+    </style>
+
     <style name="MaterialAnimations.TextAppearance.Title" parent="android:TextAppearance.Material.Title">
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
@@ -73,6 +82,11 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/spacing_normal</item>
+    </style>
+
+    <style name="MaterialAnimations.Button.Scaled" parent="MaterialAnimations.Button">
+        <item name="android:scaleX">0</item>
+        <item name="android:scaleY">0</item>
     </style>
 
 </resources>
