@@ -25,7 +25,7 @@
             android:name=".TransitionActivity3"
             android:theme="@style/MaterialAnimations.Red" />
         <activity
-            android:name=".DetailActivity2"
+            android:name=".SharedElementActivity"
             android:theme="@style/MaterialAnimations.Blue" />
         <activity android:name=".DetailActivity3" />
     </application>

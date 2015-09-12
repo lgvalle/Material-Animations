@@ -1,0 +1,45 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="sharedSample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:colorPrimary"
+            android:elevation="@dimen/elevation_header">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="@{sharedSample.name}"
+                android:transitionName="@string/sample_blue_title" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            style="@style/MaterialAnimations.Text.Body"
+            android:text="Toolbar title is a shared element between MainActivity and this activity" />
+
+        <FrameLayout
+            android:id="@+id/sample2_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>
