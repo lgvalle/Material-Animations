@@ -43,13 +43,11 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
                     case 1:
                         transitionToActivity(SharedElementActivity.class, viewHolder, sample);
                         break;
-
                     case 2:
                         transitionToActivity(AnimationsActivity1.class, sample);
                         break;
-
                     case 3:
-                        transitionToActivity(AnimationsActivity1.class, viewHolder, sample, R.string.square_orange_name);
+                        transitionToActivity(RevealActivity.class, viewHolder, sample, R.string.transition_reveal1);
                         break;
                 }
             }

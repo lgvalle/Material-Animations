@@ -31,9 +31,14 @@
         <activity
             android:name=".AnimationsActivity1"
             android:theme="@style/MaterialAnimations.Green" />
+
         <activity
             android:name=".AnimationsActivity2"
             android:theme="@style/MaterialAnimations.Green" />
+
+        <activity
+            android:name=".RevealActivity"
+            android:theme="@style/MaterialAnimations.Yellow" />
     </application>
 
 </manifest>

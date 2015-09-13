@@ -44,6 +44,15 @@
         <item name="android:colorAccent">@color/theme_green_accent</item>
     </style>
 
+    <style name="MaterialAnimations.Yellow" parent="MaterialAnimations">
+        <item name="android:colorPrimary">@color/theme_yellow_primary</item>
+        <item name="android:colorPrimaryDark">@color/theme_yellow_primary</item>
+        <item name="android:textColorPrimary">@color/theme_yellow_text</item>
+        <item name="android:statusBarColor">@color/theme_yellow_primary_dark</item>
+        <item name="android:windowBackground">@color/theme_yellow_background</item>
+        <item name="android:colorAccent">@color/theme_yellow_accent</item>
+    </style>
+
     <style name="MaterialAnimations.TextAppearance.Title" parent="android:TextAppearance.Material.Title">
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
@@ -71,6 +80,18 @@
     <style name="MaterialAnimations.Icon.Big">
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="MaterialAnimations.Icon.Medium">
+        <item name="android:layout_width">84dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_height">84dp</item>
+    </style>
+
+    <style name="MaterialAnimations.Icon.Medium.Scaled" parent="MaterialAnimations.Icon.Medium">
+        <item name="android:alpha">0</item>
+        <item name="android:scaleX">0.5</item>
+        <item name="android:scaleY">0.5</item>
     </style>
 
     <style name="MaterialAnimations.Icon.Small">

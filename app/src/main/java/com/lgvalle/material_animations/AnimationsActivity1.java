@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import com.lgvalle.material_animations.databinding.ActivityAnimations1Binding;
 
 public class AnimationsActivity1 extends BaseDetailActivity {
-
     private ImageView square;
     private ViewGroup viewRoot;
     private boolean sizeChanged;

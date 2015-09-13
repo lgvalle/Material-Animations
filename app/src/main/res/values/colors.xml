@@ -57,10 +57,10 @@
     <color name="theme_red_primary_dark">#e64a4a</color>
 
     <color name="theme_yellow_background">#ffff8d</color>
-    <color name="theme_yellow_primary">#ffeb3b</color>
+    <color name="theme_yellow_primary">#ff8800</color>
     <color name="theme_yellow_accent">#19dcff</color>
     <color name="theme_yellow_text">@color/text_dark</color>
-    <color name="theme_yellow_primary_dark">#e6d335</color>
+    <color name="theme_yellow_primary_dark">#EF6C00</color>
 
     <color name="green">#00e676</color>
     <color name="red">#ff5252</color>
