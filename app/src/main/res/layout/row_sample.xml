@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/sample_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_double">
+
+        <ImageView
+            android:id="@+id/sample_icon"
+            style="@style/MaterialAnimations.Icon.Small"
+            android:src="@drawable/circle_24dp"
+            app:colorTint="@{sample.color}" />
+
+        <TextView
+            android:id="@+id/sample_name"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{sample.name}"
+            tools:text="View animations sample" />
+
+    </LinearLayout>
+</layout>

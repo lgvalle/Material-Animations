@@ -7,5 +7,13 @@
     <string name="square_red_name">square_red</string>
     <string name="square_blue_name">square_blue</string>
     <string name="square_green_name">square_green</string>
-    <string name="square_orange_name">square_orange</string>
+    <string name="transition_reveal1">transition_reveal1</string>
+
+    <string name="sample_blue_title">sample_blue_title</string>
+    <string name="long_text">Bacon ipsum dolor amet cupidatat bresaola minim, aliquip beef aute ea porchetta. Meatball brisket do, rump in beef ea ham hock spare ribs mollit qui dolore ipsum voluptate cow. Drumstick prosciutto salami duis jerky jowl. Mollit ball tip short ribs doner fugiat frankfurter leberkas andouille kevin pork loin nostrud ham culpa. Rump pariatur ham hock excepteur picanha pork. Corned beef flank proident shankle rump.</string>
+    <string name="medium_text">Porchetta landjaeger tail meatball t-bone spare ribs. Sirloin pork chop bacon pork belly strip steak. Porchetta ham meatball pig salami short ribs jowl spare ribs sirloin tongue jerky cupim chuck.</string>
+    <string name="reveal_body1">Circular Reveal Animation starting from the center of target view</string>
+    <string name="reveal_body2">Circular Reveal Animation starting from touch coordinates</string>
+    <string name="reveal_body3">View layout change animation with Circular Reveal Animation on finish</string>
+    <string name="reveal_body4">Circular Reveal Animation from top with nested animations on end</string>
 </resources>

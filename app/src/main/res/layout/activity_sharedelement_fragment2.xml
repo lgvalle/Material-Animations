@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|top"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/square_blue"
+        style="@style/MaterialAnimations.Icon.Small"
+        android:src="@drawable/circle_24dp"
+        android:transitionName="@string/square_blue_name" />
+
+    <TextView
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/square_blue"
+        android:layout_alignTop="@+id/square_blue"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_toEndOf="@+id/square_blue"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Fragment 2" />
+
+
+    <TextView
+        android:id="@+id/fragment2_body1"
+        style="@style/MaterialAnimations.Text.Body"
+        android:layout_below="@+id/square_blue"
+        android:layout_centerHorizontal="true"
+        android:text="Blue circle is a shared element between two fragments" />
+
+    <TextView
+        android:id="@+id/fragment2_title"
+        style="@style/MaterialAnimations.Text.Body"
+        android:textStyle="bold"
+        android:layout_below="@+id/fragment2_body1"
+        android:text="Overlap" />
+
+    <TextView
+        style="@style/MaterialAnimations.Text.Body"
+        android:layout_below="@+id/fragment2_title"
+        android:layout_centerHorizontal="true"
+        android:text="When true, the enter transition will start as soon as possible. When false, the enter transition will wait until the exit transition completes before starting." />
+
+</RelativeLayout>

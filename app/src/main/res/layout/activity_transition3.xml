@@ -1,0 +1,62 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="transition3Sample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:colorPrimary"
+            android:elevation="@dimen/elevation_header">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="@{transition3Sample.name}" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/square_red"
+            style="@style/MaterialAnimations.Icon.Big"
+            android:src="@drawable/circle_24dp"
+            app:colorTint="@{transition3Sample.color}" />
+
+        <TextView
+            android:id="@+id/activity_title"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Slide" />
+
+        <TextView
+            style="@style/MaterialAnimations.Text.Body"
+            android:text="@string/medium_text" />
+
+        <Button
+            android:id="@+id/exit_button"
+            android:text="Exit"
+            style="@style/MaterialAnimations.Button" />
+
+
+
+
+    </LinearLayout>
+</layout>

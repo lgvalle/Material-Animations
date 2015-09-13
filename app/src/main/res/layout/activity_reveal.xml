@@ -1,0 +1,98 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="reveal1Sample"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MaterialAnimations.TextAppearance.Title"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="?android:colorPrimary"
+            android:elevation="@dimen/elevation_header">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/shared_target"
+                    style="@style/MaterialAnimations.Icon.Small"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/circle_24dp"
+                    android:transitionName="@string/transition_reveal1"
+                    app:colorTint="@{reveal1Sample.color}" />
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical|start"
+                    android:text="@{reveal1Sample.name}"
+                    tools:text="Title" />
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <RelativeLayout
+            android:id="@+id/reveal_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sample_body"
+                style="@style/MaterialAnimations.Text.Body"
+                android:text="Sample Activity demonstrating how to create different CirculaReveal animations" />
+
+
+            <ImageView
+                android:id="@+id/square_green"
+                style="@style/MaterialAnimations.Icon.Medium.Scaled"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/circle_24dp"
+                android:tint="@color/sample_green" />
+
+            <ImageView
+                android:id="@+id/square_red"
+                android:layout_toRightOf="@id/square_green"
+                style="@style/MaterialAnimations.Icon.Medium.Scaled"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/circle_24dp"
+                android:tint="@color/sample_red" />
+
+            <ImageView
+                android:id="@+id/square_blue"
+                android:layout_toRightOf="@id/square_red"
+                style="@style/MaterialAnimations.Icon.Medium.Scaled"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/circle_24dp"
+                android:tint="@color/sample_blue" />
+
+            <ImageView
+                android:id="@+id/square_yellow"
+                android:layout_toRightOf="@id/square_blue"
+                style="@style/MaterialAnimations.Icon.Medium.Scaled"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/circle_24dp"
+                android:tint="@color/sample_yellow" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/anim_duration_long"
+    android:interpolator="@android:interpolator/decelerate_cubic"
+    >
+    <changeBounds>
+        <!--patternPathMotion android:patternPathData="M0 0 L0 100 L100 0"/-->
+        <arcMotion
+            android:maximumAngle="90"
+            android:minimumHorizontalAngle="90"
+            android:minimumVerticalAngle="0" />
+
+    </changeBounds>
+</transitionSet>
