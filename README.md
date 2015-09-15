@@ -376,10 +376,9 @@ It is very easy to spot the difference in this example:
 
 Overlap True | Overlap False
 --- | --- 
-Fragment2 content appears on top of Fragment 1 | Fragment2 content waits until Fragment1 is out to enter
+Fragment_2 appears on top of Fragment_1 | Fragment_2 waits until Fragment_1 is gone
 ![shared_element_overlap] | ![shared_element_no_overlap]
  
-
 
 
 ## 3. Animate view layout elements
