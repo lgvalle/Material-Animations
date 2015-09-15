@@ -19,14 +19,9 @@ All these transitions track changes to the visibility of target views in activit
 ![transition_explode] | ![transition_slide] | ![transition_fade]
 
 
+You can define these transitions **declarative** using XML or **programmatically**. For the Fade Transition sample, it would look like this:
 
-
-
-
-You can define these transitions **declarative** using XML or **programmatically**. 
-
-### FADE SAMPLE
-#### Declarative XML
+### Declarative
 Transitions are defined on XML files in `res/transition`
 
 > res/transition/activity_fade.xml
@@ -83,7 +78,7 @@ To use these transitions you need to inflate them using `TransitionInflater`
 
 ```
 
-#### Programmatically 
+### Programmatically 
 
 > MainActivity.java
  
