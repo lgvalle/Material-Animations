@@ -33,10 +33,11 @@
 
     <!-- theme colors -->
     <color name="theme_blue_background">#84ffff</color>
-    <color name="theme_blue_primary">#03a9f4</color>
+    <color name="theme_blue_primary">#4FC3F7</color>
     <color name="theme_blue_accent">#ff193a</color>
     <color name="theme_blue_text">@color/text_dark</color>
-    <color name="theme_blue_primary_dark">#038dcc</color>
+    <color name="theme_blue_text_inverse">@android:color/black</color>
+    <color name="theme_blue_primary_dark">#039BE5</color>
 
     <color name="theme_green_background">#b9f6ca</color>
     <color name="theme_green_primary">#669900</color>

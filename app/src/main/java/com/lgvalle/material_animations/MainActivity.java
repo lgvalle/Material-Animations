@@ -2,15 +2,17 @@ package com.lgvalle.material_animations;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.view.Gravity;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends BaseDetailActivity {
+public class MainActivity extends AppCompatActivity {
     private List<Sample> samples;
 
     @Override
@@ -39,6 +41,12 @@ public class MainActivity extends BaseDetailActivity {
                 new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Animation")
         );
+    }
+
+    protected void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void setupLayout() {
