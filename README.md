@@ -622,21 +622,21 @@ btnRed.setLayoutParams(layoutParams);
 
 [transition_explode]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_explode.gif
 [transition_slide]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_slide.gif
-[transition_fade]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade.gif
-[transition_fade2]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade2.gif
-[transition_a_to_b]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_A_to_B.png
-[transition_b_to_a]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_B_to_A.png
+[transition_fade]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade.gif
+[transition_fade2]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade2.gif
+[transition_a_to_b]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_A_to_B.png
+[transition_b_to_a]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_B_to_A.png
 
-[shared_element]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element.png
-[shared_element_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_anim.gif
-[shared_element_no_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_no_overlap.gif
-[shared_element_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_overlap.gif
+[shared_element]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element.png
+[shared_element_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_anim.gif
+[shared_element_no_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_no_overlap.gif
+[shared_element_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_overlap.gif
 
-[scenes_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/scenes_anim.gif
-[view_layout_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/view_layout_anim.gif
+[scenes_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scenes_anim.gif
+[view_layout_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/view_layout_anim.gif
 
-[reveal_blue]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_blue.gif
-[reveal_red]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_red.gif
-[reveal_green]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_green.gif
-[reveal_yellow]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_yellow.gif
-[reveal_shared_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_reveal_anim.gif
+[reveal_blue]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_blue.gif
+[reveal_red]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_red.gif
+[reveal_green]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_green.gif
+[reveal_yellow]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_yellow.gif
+[reveal_shared_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_reveal_anim.gif
