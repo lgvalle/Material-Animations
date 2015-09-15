@@ -23,7 +23,7 @@ All these transitions track changes to the visibility of target views in activit
 
 
 
-You can define these transitions **declarative** using XML or **programatically**. 
+You can define these transitions **declarative** using XML or **programmatically**. 
 
 ### FADE SAMPLE
 #### Declarative XML
@@ -83,7 +83,7 @@ To use these transitions you need to inflate them using `TransitionInflater`
 
 ```
 
-#### Programatically 
+#### Programmatically 
 
 > MainActivity.java
  
@@ -168,10 +168,15 @@ We can modify previous Fade sample and define a `ReturnTransition` for `Transiti
     }
 
 ```
-Compare both cases:
+
+
+Observe that if no Return Transition is defined then a reversed Enter Transition is executed.
+If a Return Transition is defined that one is executed instead. 
 
 Without Return Transition | With Return Transition 
 --- | --- 
+Enter: `Fade In` | Enter: `Fade In`
+Exit: `Fade Out` | Exit: `Slide out`
 ![transition_fade] | ![transition_fade2] 
 
 
@@ -189,7 +194,7 @@ Keep this always in mind: the view **is not really moving** from one layout to a
 
 ### a) Enable Window Content Transition
 
-This is something you need to setup once on your app `styles.xml`.
+This is something you need to set up once on your app `styles.xml`.
 
 > values/styles.xml
 
@@ -201,9 +206,9 @@ This is something you need to setup once on your app `styles.xml`.
 </style>
 ```
 
-Here you can also specity default enter, exit and shared element transitions for the whole app if you want
+Here you can also specify default enter, exit and shared element transitions for the whole app if you want
 
-```
+```xml
 <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
     ...
     <!-- specify enter and exit transitions -->
@@ -245,7 +250,7 @@ To make the trick you need to give both, origin and target views, the same **`an
 
 ### c) Start an activity with a shared element 
 
-Use the ActivityOptions.makeSceneTransitionAnimation() method to define shared element origin view and transition name.
+Use the `ActivityOptions.makeSceneTransitionAnimation()` method to define shared element origin view and transition name.
 
 > MainActivity.java
 
@@ -376,6 +381,7 @@ It is very easy to spot the difference in this example:
 
 Overlap True | Overlap False
 --- | --- 
+Fragment2 content appears on top of Fragment 1 | Fragment2 content waits until Fragment1 is out to enter
 ![shared_element_overlap] | ![shared_element_no_overlap]
  
 
@@ -424,7 +430,7 @@ Transition Framework will take all visible views in current scene and calculate 
 
 ### Layout changes
 
-Transition Framework can also be used to animate layout property changes in a view. You just need to make whatever changes you want and it will perfom neccessary animations for you
+Transition Framework can also be used to animate layout property changes in a view. You just need to make whatever changes you want and it will perform necessary animations for you
 
 #### a) Begin Delayed Transition
 
@@ -467,7 +473,7 @@ What is happening in this example step by step is:
 
 > Listen to shared element enter transition end
 
-```
+```java
 Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
 getWindow().setSharedElementEnterTransition(transition);
 transition.addListener(new Transition.TransitionListener() {
