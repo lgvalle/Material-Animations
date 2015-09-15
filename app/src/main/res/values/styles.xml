@@ -28,8 +28,9 @@
 
     <style name="MaterialAnimations.Blue" parent="MaterialAnimations">
         <item name="android:colorPrimary">@color/theme_blue_primary</item>
-        <item name="android:colorPrimaryDark">@color/theme_blue_primary</item>
+        <item name="android:colorPrimaryDark">@color/theme_blue_primary_dark</item>
         <item name="android:textColorPrimary">@color/theme_blue_text</item>
+        <item name="android:textColorPrimaryInverse">@color/theme_blue_text_inverse</item>
         <item name="android:statusBarColor">@color/theme_blue_primary_dark</item>
         <item name="android:windowBackground">@color/theme_blue_background</item>
         <item name="android:colorAccent">@color/theme_blue_accent</item>
