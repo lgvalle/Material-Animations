@@ -1,37 +1,53 @@
-# Android Transitions
+[Android Transition Framework][transition-framework] can be used for **three** main things:
 
-android.Transition Framework can be used for three main things:
-
-1. Animate View elements in transitions between activites (or fragments)
-2. Animate shared elements (hero views) in transitions between activities (or fragments)
-3. Animate View elements from one activity scene to another.
+1. Animate activity layout content when transitioning from one activity to another.
+2. Animate shared elements (Hero views) in transitions between activities.
+3. Animate view changes within same activity.
 
 
 ## 1. Transitions between Activities
 
-Animate existing activity layout **content** (non-hero views) 
+Animate existing activity layout **content**
 
-![A Start B](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/A_startActivity_B.png)
+![A Start B][transition_a_to_b]
 
-You can define these transitions **declarative** using XML or **programatically**.
+When transitioning from `Activity A` to `Activity B` content layout is animated according to defined transition. There are three predefined transitions available on `android.transition.Transition` you can use: **Explode**, **Slide** and **Fade**. 
+All these transitions track changes to the visibility of target views in activity layout and animate those views to follow transition rules.
 
-### Declarative
+[Explode][explode_link] | [Slide][slide_link] | [Fade][fade_link]
+--- | --- | ---
+![transition_explode] | ![transition_slide] | ![transition_fade]
 
-> res/transition/activity_explode.xml
+
+
+
+
+
+You can define these transitions **declarative** using XML or **programatically**. 
+
+### FADE SAMPLE
+#### Declarative XML
+Transitions are defined on XML files in `res/transition`
+
+> res/transition/activity_fade.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
-    <explode android:duration="2000"/>
-</transitionSet>
+<fade xmlns:android="http://schemas.android.com/apk/res/
+    android:duration="1000"/>
+
 ```
-> res/values/style.xml
+
+> res/transition/activity_slide.xml
 
 ```xml
-<item name="android:windowEnterTransition">@transition/activity_explode.xml</item>
+<?xml version="1.0" encoding="utf-8"?>
+<slide xmlns:android="http://schemas.android.com/apk/res/
+    android:duration="1000"/>
+
 ```
 
-To inflate specific xml defined transition: 
+To use these transitions you need to inflate them using `TransitionInflater`
 
 > MainActivity.java
  
@@ -39,123 +55,124 @@ To inflate specific xml defined transition:
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_transition);
         setupWindowAnimations();
     }
 
     private void setupWindowAnimations() {
-        Explode explode = TransitionInflater.from(this).inflateTransition(R.transition.activity_explode);
-        explode.setDuration(2000);
-        getWindow().setExitTransition(explode);
+        Slide slide = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
+        getWindow().setExitTransition(slide);
     }
 
 ```
 
-### Programatically 
+> TransitionActivity.java
+ 
+```java
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transition);
+        setupWindowAnimations();
+    }
+
+    private void setupWindowAnimations() {
+        Fade fade = TransitionInflater.from(this).inflateTransition(R.transition.activity_fade);
+        getWindow().setEnterTransition(fade);
+    }
+
+```
+
+#### Programatically 
 
 > MainActivity.java
-
+ 
 ```java
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_transition);
         setupWindowAnimations();
     }
 
     private void setupWindowAnimations() {
-        Explode explode = new Explode();
-        explode.setDuration(2000);
-        getWindow().setExitTransition(explode);
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getWindow().setExitTransition(slide);
     }
+
 ```
 
-> DetailActivity.java
-
+> TransitionActivity.java
+ 
 ```java
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_transition);
         setupWindowAnimations();
     }
 
     private void setupWindowAnimations() {
-        Explode explode = new Explode();
-        explode.setDuration(2000);
-        getWindow().setEnterTransition(explode);
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);
     }
 
 ```
 
-### Any of those produce this result:
+#### Any of those produce this result:
 
-![A start B exmaple] (https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/example1.gif)
+![transition_fade]
 
 
 ### What is happening step by step:
 
 1. Activity A starts Activity B
 
-2. Transition Framework finds A Exit Transition (explode) and apply it to all visible views.
-3. Transition Framework finds B Enter Transition (explode) and apply it to all visible views.
-4. On Back Pressed Transition Framework executes Enter and Exit reverse animations respectively (because it cannot find `returnTransition` and `reenterTransition`) 
+2. Transition Framework finds A Exit Transition (slide) and apply it to all visible views.
+3. Transition Framework finds B Enter Transition (fade) and apply it to all visible views.
+4. **On Back Pressed** Transition Framework executes Enter and Exit reverse animations respectively (If we had defined output `returnTransition` and `reenterTransition`, these have been executed instead) 
 
 ### ReturnTransition & ReenterTransition
 
-These two methods define the reverse animations for `enter` and `exit` respectively.
+Return and Reenter Transitions are the reverse animations for Enter and Exit respectively.
 
-![b back a](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/B_back_A.png)
+  * EnterTransition <--> ReturnTransition
+  * ExitTransition <--> ReenterTransition
 
-In our example, if we do:
+If Return or Reenter are not defined, Android will execute a reversed version of Enter and Exit Transitions. But if you do define them, you can have different transitions for entering and exiting an activity.
+
+![b back a][transition_b_to_a]
+
+We can modify previous Fade sample and define a `ReturnTransition` for `TransitionActivity`, in this case, a **Slide** transition. This way, when returning from B to A, instead of seeing a Fade out (reversed Enter Transition) we will see a **Slide out** transition
  
-> MainActivity.java
-
+> TransitionActivity.java
+ 
 ```java
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_transition);
         setupWindowAnimations();
     }
 
     private void setupWindowAnimations() {
-        Explode explode = new Explode();
-        explode.setDuration(2000);
-        getWindow().setExitTransition(explode);
-        
         Fade fade = new Fade();
-        fade.setDuration(2000);
-        getWindow().setReenterTransition(fade);
-          
-    }
-```
-
-> DetailActivity.java
-
-```java
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setupWindowAnimations();
-    }
-
-    private void setupWindowAnimations() {
-        Explode explode = new Explode();
-        expl.setDuration(2000);
-        getWindow().setEnterTransition(explode);
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);
         
-        Fade fade = new Fade();
-        fade.setDuration(2000);
-        getWindow().setReturnTransition(fade);        
+        Slide slide = new Slide();
+        fade.setDuration(1000);
+        getWindow().setReturnTransition(slide);        
     }
 
 ```
+Compare both cases:
 
-We have a nice Explode for going forward and Fade for backward:
-
-![b back a screenshot](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/example2.gif)
+Without Return Transition | With Return Transition 
+--- | --- 
+![transition_fade] | ![transition_fade2] 
 
 
 ## 2. Shared elements between Activities
@@ -167,24 +184,80 @@ Transition framework will then do _whatever animations it consider necessary_ to
 Keep this always in mind: the view **is not really moving** from one layout to another. They are two independent views.
 
 
-![A Start B with shared](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/a_b_shared_element.png)
+![A Start B with shared][shared_element]
 
-As you can see there are two views with ids 'smallSquare' and 'bigSquare'. But they have the **same** 'transitionName'. 
 
-This way the Transition Framework knows it needs to create an animation from one view to the other.
+### a) Enable Window Content Transition
 
+This is something you need to setup once on your app `styles.xml`.
+
+> values/styles.xml
+
+```xml
+<style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    ...
+    <item name="android:windowContentTransitions">true</item
+    ...
+</style>
+```
+
+Here you can also specity default enter, exit and shared element transitions for the whole app if you want
+
+```
+<style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    ...
+    <!-- specify enter and exit transitions -->
+    <item name="android:windowEnterTransition">@transition/explode</item>
+    <item name="android:windowExitTransition">@transition/explode</item>
+
+    <!-- specify shared element transitions -->
+    <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+    <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
+    ...
+</style>
+```
+
+
+
+### b) Define a common transition name
+
+To make the trick you need to give both, origin and target views, the same **`android:transitionName`**. They may have different ids or properties, but `android:transitionName` must be the same.
+
+> layout/activity_a.xml
+
+```xml
+<ImageView
+        android:id="@+id/small_blue_icon"
+        style="@style/MaterialAnimations.Icon.Small"
+        android:src="@drawable/circle"
+        android:transitionName="@string/blue_name" />
+```
+
+> layout/activity_b.xml
+
+```xml
+<ImageView
+        android:id="@+id/big_blue_icon"
+        style="@style/MaterialAnimations.Icon.Big"
+        android:src="@drawable/circle"
+        android:transitionName="@string/blue_name" />
+```
+
+### c) Start an activity with a shared element 
+
+Use the ActivityOptions.makeSceneTransitionAnimation() method to define shared element origin view and transition name.
 
 > MainActivity.java
 
 ```java
 
-squareBlue.setOnClickListener(new View.OnClickListener() {
+blueIconImageView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(MainActivity.this, DetailActivity2.class);
+        Intent i = new Intent(MainActivity.this, SharedElementActivity.class);
 
-        View sharedView = squareBlue;
-        String transitionName = getString(R.string.square_blue_name);
+        View sharedView = blueIconImageView;
+        String transitionName = getString(R.string.blue_name);
 
         ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, sharedView, transitionName);
         startActivity(i, transitionActivityOptions.toBundle());
@@ -193,223 +266,377 @@ squareBlue.setOnClickListener(new View.OnClickListener() {
 
 ```
 
-> layout/main_activity.xml
-
-```xml
-<View
-        android:layout_margin="10dp"
-        android:id="@+id/square_blue"
-        android:layout_width="50dp"
-        android:background="@android:color/holo_blue_light"
-        android:transitionName="@string/square_blue_name"
-        android:layout_height="50dp"/>
-
-```
-
-> layou/details_activity2.xml
-
-```xml
-<View
-        android:layout_width="150dp"
-        android:id="@+id/big_square_blue"
-        android:layout_margin="10dp"
-        android:transitionName="@string/square_blue_name"
-        android:layout_centerInParent="true"
-        android:background="@android:color/holo_blue_light"
-        android:layout_height="150dp" />
-```
 
 Just that code will produce this beautiful transition animation:
 
-![a to b with shared element](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements.gif)
+![a to b with shared element][shared_element_anim]
 
-As you can see, Transition framework is creating and executing an animation to create the illusion that the view is moving and changing shape.
+As you can see, Transition framework is creating and executing an animation to create the illusion that views are moving and changing shape from one activity to the other
 
-To proof the blue square view is not really _moving_ we can do this quick exercise: change transitioName in DetailsActivity from Big Blue Square to the Title Text above it.
+## Shared elements between fragments
+
+Shared element transition works with Fragments in a very similar way as it does with activities. 
+
+Steps **a)** and **b)** are exactly the **same**. Only **c)** changes			
+
+### a) Enable Window Content Transition
+
+> values/styles.xml
 
 ```xml
-<TextView
-        android:layout_width="wrap_content"
-        android:text="Activity Detail 2"
-        style="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_centerHorizontal="true"
-        android:transitionName="@string/square_blue_name"
-        android:layout_above="@+id/big_square_blue"
-        android:layout_height="wrap_content" />
+<style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    ...
+    <item name="android:windowContentTransitions">true</item
+    ...
+</style>
 ```
 
-If we now execute the app we have the same behaviour but targeting a different view:
+### b) Define a common transition name
 
-![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition-shared-elements2.gif)        
+> layout/fragment_a.xml
+
+```xml
+<ImageView
+        android:id="@+id/small_blue_icon"
+        style="@style/MaterialAnimations.Icon.Small"
+        android:src="@drawable/circle"
+        android:transitionName="@string/blue_name" />
+```
+
+> layout/fragment_b.xml
+
+```xml
+<ImageView
+        android:id="@+id/big_blue_icon"
+        style="@style/MaterialAnimations.Icon.Big"
+        android:src="@drawable/circle"
+        android:transitionName="@string/blue_name" />
+```
+
+###  c) Start a fragment with a shared element
+
+To do this you need to include shared element transition information as part of the **`FragmentTransaction`** process.
+
+```java
+FragmentB fragmentB = FragmentB.newInstance(sample);
+
+// Defines enter transition for all fragment views
+Slide slideTransition = new Slide(Gravity.END);
+slideTransition.setDuration(1000);
+sharedElementFragment2.setEnterTransition(slideTransition);
+
+// Defines enter transition only for shared element
+ChangeBounds changeBoundsTransition = TransitionInflater.from(this).inflateTransition(R.transition.change_bounds);
+fragmentB.setSharedElementEnterTransition(changeBoundsTransition);
+
+getFragmentManager().beginTransaction()
+        .replace(R.id.content, fragmentB)
+        .addSharedElement(blueView, getString(R.string.blue_name))
+        .commit();
+```
+
+And this is the final result:
+
+![shared_element_no_overlap]
+
+## Allow Transition Overlap
+
+You can define if enter and exit transitions can overlap each other. 
+
+From [Android documentation](http://developer.android.com/intl/ko/reference/android/app/Fragment.html#getAllowEnterTransitionOverlap()):
+> When **true**, the enter transition will start as soon as possible. 
+> 
+> When **false**, the enter transition will wait until the exit transition completes before starting.
+
+This works for both Fragments and Activities shared element transitions.
+
+```java
+FragmentB fragmentB = FragmentB.newInstance(sample);
+
+// Defines enter transition for all fragment views
+Slide slideTransition = new Slide(Gravity.END);
+slideTransition.setDuration(1000);
+sharedElementFragment2.setEnterTransition(slideTransition);
+
+// Defines enter transition only for shared element
+ChangeBounds changeBoundsTransition = TransitionInflater.from(this).inflateTransition(R.transition.change_bounds);
+fragmentB.setSharedElementEnterTransition(changeBoundsTransition);
+
+// Prevent transitions for overlapping
+fragmentB.setAllowEnterTransitionOverlap(overlap);
+fragmentB.setAllowReturnTransitionOverlap(overlap);
+
+getFragmentManager().beginTransaction()
+        .replace(R.id.content, fragmentB)
+        .addSharedElement(blueView, getString(R.string.blue_name))
+        .commit();
+```
+
+It is very easy to spot the difference in this example:
+
+Overlap True | Overlap False
+--- | --- 
+![shared_element_overlap] | ![shared_element_no_overlap]
+ 
+
 
 
 ## 3. Animate view layout elements
 
-Transition framework can also be used to animate element changes within current activity layout. 
+### Scenes
+Transition Framework can also be used to animate element changes within current activity layout. 
 
-Transitions happen between scenes. An scene defines a static state of our UI. You can do complex things regarding _scenes_ but I want to keep this example as **simple as possible**. 
+Transitions happen between scenes. A scene is just a regular layout which **defines a static state of our UI**. You can transition from one scene to another and Transition Framework will animate views in between.
 
-If you want to know more about scenes I recomend you check [this video by Chet Hasse] 
-(https://www.youtube.com/watch?v=S3H7nJ4QaD8)
+```java
+scene1 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene1, this);
+scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene2, this);
+scene3 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene3, this);
+scene4 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene4, this);
 
-In this example I'm going to use the easier way to animate layout changes inside an Activity layout:
+(...)
+
+@Override
+public void onClick(View v) {
+    switch (v.getId()) {
+        case R.id.button1:
+            TransitionManager.go(scene1, new ChangeBounds());
+            break;
+        case R.id.button2:
+            TransitionManager.go(scene2, TransitionInflater.from(this).inflateTransition(R.transition.slide_and_changebounds));
+            break;
+        case R.id.button3:
+            TransitionManager.go(scene3, TransitionInflater.from(this).inflateTransition(R.transition.slide_and_changebounds_sequential));
+            break;
+        case R.id.button4:
+            TransitionManager.go(scene4, TransitionInflater.from(this).inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
+            break;  
+    }
+}
+```
+
+That code would produce transition between four scenes in the same activity. Each transition has a different animation defined. 
+
+Transition Framework will take all visible views in current scene and calculate whatever necessary animations are needed to arrange those views according to next scene.
+
+![scenes_anim]
+
+
+### Layout changes
+
+Transition Framework can also be used to animate layout property changes in a view. You just need to make whatever changes you want and it will perfom neccessary animations for you
+
+#### a) Begin Delayed Transition
+
+With just this line of code we are telling the framework we are going to perform some UI changes that it will need to animate.
 
 ```java
 TransitionManager.beginDelayedTransition(sceneRoot);
 ```
+#### b) Change view layout properties
 
-With just this line of code we are telling the framework we are going to perform some UI changes that it will need to animate.
-
-After that we made the changes on our UI elements:
 
 ```java
-setViewWidth(squareRed, 500);
-setViewWidth(squareBlue, 500);
-setViewWidth(squareGreen, 500);
-setViewWidth(squareYellow, 500);
+ViewGroup.LayoutParams params = greenIconView.getLayoutParams();
+params.width = 200;
+greenIconView.setLayoutParams(params);
+
 ```
 
-This will change those views width attribute to make it larger. That will trigger a `layoutMeasure`. At that point the Transition framework will record start and ending values and will create an animation to transition from one to another.
+Changing view width attribute to make it smaller will trigger a `layoutMeasure`. At that point the Transition framework will record start and ending values and will create an animation to transition from one to another.
 
-```java
- squareGreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TransitionManager.beginDelayedTransition(sceneRoot);
-                setViewWidth(squareRed, 500);
-                setViewWidth(squareBlue, 500);
-                setViewWidth(squareGreen, 500);
-                setViewWidth(squareYellow, 500);
-            }
-        });
-    }
-
-    private void setViewWidth(View view, int x) {
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.width = x;
-        view.setLayoutParams(params);
-    }
-```
     
-![a to b with shared element - 2](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scene-transition.gif)   
+![view layout animation][view_layout_anim]
 
 
-## 4. Shared elements + Circular Reveal
+## 4. (Bonus) Shared elements + Circular Reveal
 Circular Reveal is just an animation to show or hide a group of UI elements. It is available since API 21 in `ViewAnimationUtils` class. 
 
-In this example I'm going to demostrate how can you make use of Shared Element Transition and Circular Reveal Animation to smoothly switch UI context.
 
-![shared+circularreveal](https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/example3.gif)   
+Circular Reveal animation can be used in combination of Shared Element Transition to create meaningful animations that smoothly teach the user what is happening in the app.
 
-### Enter Animation
-What is happening step by step is:
+![reveal_shared_anim]
 
-* Shared orange box is transitioning from `MainActivity` to `DetailsActivity`.
-* `DetailsActivity` background viewgroup visibility starts as `INVISIBLE`.
+What is happening in this example step by step is:
 
-```xml
- <RelativeLayout
-        android:layout_width="match_parent"
-        android:id="@+id/backgroundViewGroup"
-        android:visibility="invisible"
-        ...
+* Orange circle is a shared element transitioning from `MainActivity` to `RevealActivity`.
+* On `RevealActivity` there is a listener to listen for shared element transition end. When that happens it does two things:
+  * Execute a Circular Reveal animation for the Toolbar
+  * Execute a scale up animation on `RevealActivity` views using plain old `ViewPropertyAnimator`
+
+
+> Listen to shared element enter transition end
+
+```
+Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
+getWindow().setSharedElementEnterTransition(transition);
+transition.addListener(new Transition.TransitionListener() {
+    @Override
+    public void onTransitionEnd(Transition transition) {
+        animateRevealShow(toolbar);
+        animateButtonsIn();
+    }
+    
+    (...)
+
+});
+        
+```
+
+> Reveal Toolbar
+
+```java
+private void animateRevealShow(View viewRoot) {
+    int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+    int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+    int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
+
+    Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
+    viewRoot.setVisibility(View.VISIBLE);
+    anim.setDuration(1000);
+    anim.setInterpolator(new AccelerateInterpolator());
+    anim.start();
+}
+```  
+
+> Scale up activity layout views
+
+```java
+private void animateButtonsIn() {
+    for (int i = 0; i < bgViewGroup.getChildCount(); i++) {
+        View child = bgViewGroup.getChildAt(i);
+        child.animate()
+                .setStartDelay(100 + i * DELAY)
+                .setInterpolator(interpolator)
+                .alpha(1)
+                .scaleX(1)
+                .scaleY(1);
+    }
+}
+```
+
+### More circular reveal animations
+
+There are many different ways you can create a reveal animation. The important thing is to use the animation to help the user understand what is happening in the app.
+
+#### Circular Reveal from the middle of target view
+
+![reveal_green]
+
+```java
+int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+int cy = viewRoot.getTop();
+int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
+
+Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
+viewRoot.setBackgroundColor(color);
+anim.start();
 ```        
-* After `SharedElementEnterTransition` ends a `CircularReveal` animation takes place making the background viewgroup visible.
+
+#### Circular Reveal from top of target view + animations
+
+![reveal_blue]
 
 ```java
-        Transition enterTransition = getWindow().getSharedElementEnterTransition();
-        enterTransition.addListener(new Transition.TransitionListener() {
-            @Override
-            public void onTransitionStart(Transition transition) {}
+int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
 
-            @Override
-            public void onTransitionEnd(Transition transition) {
-                animateRevealShow(bgViewGroup);
-            }
+Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
+viewRoot.setBackgroundColor(color);
+anim.addListener(new AnimatorListenerAdapter() {
+    @Override
+    public void onAnimationEnd(Animator animation) {
+        animateButtonsIn();
+    }
+});
+anim.start();
+``` 
 
-            @Override
-            public void onTransitionCancel(Transition transition) {}
 
-            @Override
-            public void onTransitionPause(Transition transition) {}
+#### Circular Reveal from touch point
 
-            @Override
-            public void onTransitionResume(Transition transition) {}
-        });
-```
-
-### Exit Animation
-On exit transition steps are:
-
-* `SharedElementReturnTransition` is delayed 1 second.
+![reveal_yellow]
 
 ```java
-        Transition sharedElementReturnTransition = getWindow().getSharedElementReturnTransition();
-        sharedElementReturnTransition.setStartDelay(ANIM_DURATION);
+@Override
+public boolean onTouch(View view, MotionEvent motionEvent) {
+    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+        if (view.getId() == R.id.square_yellow) {
+            revealFromCoordinates(motionEvent.getRawX(), motionEvent.getRawY());
+        }
+    }
+    return false;
+}
 ```
 
-* `ReturnTransition` duration is setted to 1 second. Have in mind this are two **different** transitions.
+```java 
+private Animator animateRevealColorFromCoordinates(int x, int y) {
+    float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
+
+    Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
+    viewRoot.setBackgroundColor(color);
+    anim.start();
+}
+```       
+
+#### Animate and Reveal
+
+![reveal_red]
 
 ```java
-        Transition returnTransition = getWindow().getReturnTransition();
-        returnTransition.setDuration(ANIM_DURATION);
-```
+Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
+transition.addListener(new Transition.TransitionListener() {
+    @Override
+    public void onTransitionEnd(Transition transition) {
+        animateRevealColor(bgViewGroup, R.color.red);
+    }
+    (...)
+   
+});
+TransitionManager.beginDelayedTransition(bgViewGroup, transition);
+RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+btnRed.setLayoutParams(layoutParams);
+```         
+  
+
+# Sample source code
+
+**[https://github.com/lgvalle/Material-Animations](https://github.com/lgvalle/Material-Animations/)**
 
 
-* On `ReturnTransition` start a `CircularReveal` animation takes place hiding the background viewgroup.
+# More information
 
-```java
-        returnTransition.addListener(new Transition.TransitionListener() {
-            @Override
-            public void onTransitionStart(Transition transition) {
-                animateRevealHide(bgViewGroup);
-            }
-
-            @Override
-            public void onTransitionEnd(Transition transition) {}
-
-            @Override
-            public void onTransitionCancel(Transition transition) {}
-
-            @Override
-            public void onTransitionPause(Transition transition) {}
-
-            @Override
-            public void onTransitionResume(Transition transition) {}
-        });
-```
-
-
-* After 1 second, `CircularReveal` has finished and `SharedElementReturnTransition` gets executed producing orange box animation.
-
-
-
-## More information
-
-  * Alex Lockwood posts about transitions in Lollipop. A great in deep into this topic: [http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html](http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html)
-  * Very complete repository with examples by Saul Molinero: [https://github.com/saulmm/Android-Material-Examples](https://github.com/saulmm/Android-Material-Examples)
+  * Alex Lockwood posts about Transition Framework. A great in deep into this topic: [http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html](http://www.androiddesignpatterns.com/2014/12/activity-fragment-transitions-in-android-lollipop-part1.html)
+  * Amazing repository with lot of Material Design samples by Saul Molinero: [https://github.com/saulmm/Android-Material-Examples](https://github.com/saulmm/Android-Material-Examples)
   * Chet Hasse video explaining Transition framework: [https://www.youtube.com/watch?v=S3H7nJ4QaD8](https://www.youtube.com/watch?v=S3H7nJ4QaD8)
 
 
-## LICENSE
 
-	The MIT License (MIT)
-	Copyright (c) 2015 Luis G. Valle
+[transition-framework]: https://developer.android.com/training/transitions/overview.html
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
+[explode_link]: https://developer.android.com/reference/android/transition/Explode.html
+[fade_link]: https://developer.android.com/reference/android/transition/Fade.html
+[slide_link]: https://developer.android.com/reference/android/transition/Slide.html
 
-	The above copyright notice and this permission notice shall be included in all
-	copies or substantial portions of the Software.
+[transition_explode]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_explode.gif
+[transition_slide]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_slide.gif
+[transition_fade]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade.gif
+[transition_fade2]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade2.gif
+[transition_a_to_b]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_A_to_B.png
+[transition_b_to_a]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_B_to_A.png
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-	SOFTWARE.
+[shared_element]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element.png
+[shared_element_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_anim.gif
+[shared_element_no_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_no_overlap.gif
+[shared_element_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_overlap.gif
+
+[scenes_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/scenes_anim.gif
+[view_layout_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/view_layout_anim.gif
+
+[reveal_blue]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_blue.gif
+[reveal_red]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_red.gif
+[reveal_green]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_green.gif
+[reveal_yellow]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_yellow.gif
+[reveal_shared_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_reveal_anim.gif
