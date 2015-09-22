@@ -11,9 +11,29 @@ import java.io.Serializable;
  * Created by lgvalle on 04/09/15.
  */
 public class Sample implements Serializable {
-
-    int color;
-    String name;
+    
+    public final int color;
+    public final String name;
+    
+    // Makes Sample immutable
+    public static class Builder {
+        private final int color;
+        private final String name;
+        
+        public Builder color(@ColorRes int c) {
+            this.color = c;
+            return this;
+        }
+        
+        public Builder name(String n) {
+            this.name = n;
+            return this;
+        }
+        
+        public Sample build() {
+            return new Sample(color, name);
+        }
+    }
 
     public Sample(@ColorRes int color, String name) {
         this.color = color;
@@ -25,14 +45,4 @@ public class Sample implements Serializable {
         DrawableCompat.setTint(view.getDrawable(), color);
         //view.setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-
 }
