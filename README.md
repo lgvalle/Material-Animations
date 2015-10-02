@@ -16,7 +16,7 @@ All these transitions track changes to the visibility of target views in activit
 
 [Explode][explode_link] | [Slide][slide_link] | [Fade][fade_link]
 --- | --- | ---
-![transition_explode] | ![transition_sflide] | ![transition_fade]
+![transition_explode] | ![transition_flide] | ![transition_fade]
 
 
 You can define these transitions **declarative** using XML or **programmatically**. For the Fade Transition sample, it would look like this:
