@@ -158,7 +158,7 @@ We can modify previous Fade sample and define a `ReturnTransition` for `Transiti
         getWindow().setEnterTransition(fade);
         
         Slide slide = new Slide();
-        fade.setDuration(1000);
+        slide.setDuration(1000);
         getWindow().setReturnTransition(slide);        
     }
 
