@@ -56,7 +56,7 @@ public class SharedElementFragment1 extends Fragment {
     private void addNextFragment(Sample sample, ImageView squareBlue, boolean overlap) {
         SharedElementFragment2 sharedElementFragment2 = SharedElementFragment2.newInstance(sample);
 
-        Slide slideTransition = new Slide(Gravity.END);
+        Slide slideTransition = new Slide(Gravity.RIGHT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
 
         ChangeBounds changeBoundsTransition = new ChangeBounds();
