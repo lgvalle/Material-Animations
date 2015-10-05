@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupWindowAnimations() {
         // Re-enter transition is executed when returning to this activity
         Slide slideTransition = new Slide();
-        slideTransition.setSlideEdge(Gravity.START);
+        slideTransition.setSlideEdge(Gravity.LEFT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         getWindow().setReenterTransition(slideTransition);
         getWindow().setExitTransition(slideTransition);

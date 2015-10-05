@@ -33,7 +33,7 @@ public class SharedElementActivity extends BaseDetailActivity {
 
     private void setupLayout(Sample sample) {
         // Transition for fragment1
-        Slide slideTransition = new Slide(Gravity.START);
+        Slide slideTransition = new Slide(Gravity.LEFT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         // Create fragment and define some of it transitions
         SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);

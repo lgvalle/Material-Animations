@@ -321,7 +321,7 @@ To do this you need to include shared element transition information as part of 
 FragmentB fragmentB = FragmentB.newInstance(sample);
 
 // Defines enter transition for all fragment views
-Slide slideTransition = new Slide(Gravity.END);
+Slide slideTransition = new Slide(Gravity.RIGHT);
 slideTransition.setDuration(1000);
 sharedElementFragment2.setEnterTransition(slideTransition);
 
@@ -354,7 +354,7 @@ This works for both Fragments and Activities shared element transitions.
 FragmentB fragmentB = FragmentB.newInstance(sample);
 
 // Defines enter transition for all fragment views
-Slide slideTransition = new Slide(Gravity.END);
+Slide slideTransition = new Slide(Gravity.RIGHT);
 slideTransition.setDuration(1000);
 sharedElementFragment2.setEnterTransition(slideTransition);
 
