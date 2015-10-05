@@ -31,6 +31,9 @@ public class TransitionActivity1 extends BaseDetailActivity {
     private void setupWindowAnimations() {
         Visibility enterTransition = buildEnterTransition();
         getWindow().setEnterTransition(enterTransition);
+
+        //Slide slideTransition = new Slide(Gravity.LEFT);
+        //getWindow().setExitTransition(slideTransition);
     }
 
 
@@ -105,7 +108,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
     }
 
     private Visibility buildReturnTransition() {
-        Visibility enterTransition = new Slide();
+        Slide enterTransition = new Slide();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         return enterTransition;
     }

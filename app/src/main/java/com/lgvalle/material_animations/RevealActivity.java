@@ -267,6 +267,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
 
         Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
         viewRoot.setBackgroundColor(getColor(color));
+        viewRoot.setVisibility(View.VISIBLE);
         anim.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
         anim.start();

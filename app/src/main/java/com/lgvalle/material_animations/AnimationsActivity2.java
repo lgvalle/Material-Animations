@@ -30,6 +30,7 @@ public class AnimationsActivity2 extends BaseDetailActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_animations1);
         bindData();
         setupLayout();
         setupToolbar();
@@ -64,9 +65,10 @@ public class AnimationsActivity2 extends BaseDetailActivity {
             @Override
             public void onTransitionEnd(Transition transition) {
                 getWindow().getEnterTransition().removeListener(this);
-                TransitionManager.go(scene0);
+                //TransitionManager.go(scene0);
             }
         });
+        TransitionManager.go(scene1);
     }
 
     private void setupLayout() {
@@ -115,7 +117,8 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds));
+                Transition transition = TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds);
+                TransitionManager.go(scene2, transition);
             }
         });
 

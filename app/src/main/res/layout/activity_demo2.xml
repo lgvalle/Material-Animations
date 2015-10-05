@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MaterialAnimations.TextAppearance.Title"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/material_animations_primary"
+        android:elevation="@dimen/elevation_header">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:text="@string/app_name" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/sample_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+
+                android:padding="@dimen/spacing_double">
+
+                <ImageView
+                    android:id="@+id/sample_icon"
+                    style="@style/MaterialAnimations.Icon.Small"
+                    android:visibility="invisible"
+                    android:src="@drawable/circle_24dp"
+                     />
+
+                <TextView
+                    android:id="@+id/sample_name"
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    tools:text="View animations sample" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            card_view:cardBackgroundColor="#F3CC20"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+
+                android:padding="@dimen/spacing_double">
+
+                <ImageView
+                    style="@style/MaterialAnimations.Icon.Small"
+                    android:visibility="invisible"
+                    android:src="@drawable/circle_24dp"
+                    />
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    tools:text="View animations sample" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view3"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+
+                android:padding="@dimen/spacing_double">
+
+                <ImageView
+                    style="@style/MaterialAnimations.Icon.Small"
+                    android:visibility="invisible"
+                    android:src="@drawable/circle_24dp"
+                    />
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    tools:text="View animations sample" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view4"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical"
+
+                android:padding="@dimen/spacing_double">
+
+                <ImageView
+                    style="@style/MaterialAnimations.Icon.Small"
+                    android:visibility="invisible"
+                    android:src="@drawable/circle_24dp"
+                    />
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Large"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    tools:text="View animations sample" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

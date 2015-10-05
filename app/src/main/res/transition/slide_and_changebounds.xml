@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="@integer/anim_duration_long">
-    <slide />
-    <changeBounds />
-</transitionSet>
+<fade xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fadingMode="fade_in"
+    android:interpolator="@android:interpolator/accelerate_cubic"
+    android:startDelay="250"
+    android:duration="1000" />

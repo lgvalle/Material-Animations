@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.view.Gravity;
 
@@ -27,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupWindowAnimations() {
         // Re-enter transition is executed when returning to this activity
-        Slide slideTransition = new Slide();
-        slideTransition.setSlideEdge(Gravity.START);
+        Slide slideTransition = new Slide(Gravity.LEFT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         getWindow().setReenterTransition(slideTransition);
+        getWindow().setExitTransition(slideTransition);
+        getWindow().setSharedElementReturnTransition(new Fade());
         getWindow().setExitTransition(slideTransition);
     }
 

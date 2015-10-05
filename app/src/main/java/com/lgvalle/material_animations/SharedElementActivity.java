@@ -3,6 +3,7 @@ package com.lgvalle.material_animations;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.view.Gravity;
 
@@ -29,17 +30,20 @@ public class SharedElementActivity extends BaseDetailActivity {
     private void setupWindowAnimations() {
         // We are not interested in defining a new Enter Transition. Instead we change default transition duration
         getWindow().getEnterTransition().setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        getWindow().setSharedElementReturnTransition(null);
     }
 
     private void setupLayout(Sample sample) {
         // Transition for fragment1
-        Slide slideTransition = new Slide(Gravity.START);
+        Slide slideTransition = new Slide(Gravity.LEFT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         // Create fragment and define some of it transitions
         SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);
         sharedElementFragment1.setReenterTransition(slideTransition);
         sharedElementFragment1.setExitTransition(slideTransition);
         sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());
+        sharedElementFragment1.setAllowEnterTransitionOverlap(true);
+        sharedElementFragment1.setSharedElementReturnTransition(new Fade());
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.sample2_content, sharedElementFragment1)

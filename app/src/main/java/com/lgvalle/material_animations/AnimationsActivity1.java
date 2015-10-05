@@ -87,10 +87,19 @@ public class AnimationsActivity1 extends BaseDetailActivity {
         if (positionChanged) {
             lp.gravity = Gravity.CENTER;
         } else {
-            lp.gravity = Gravity.START;
+            lp.gravity = Gravity.RIGHT;
+            lp.width = 200;
         }
         positionChanged = !positionChanged;
         square.setLayoutParams(lp);
+
+        View red = findViewById(R.id.square_red);
+        LinearLayout.LayoutParams lp2 = (LinearLayout.LayoutParams) red.getLayoutParams();
+        red.setLayoutParams(lp2);
+        red.setVisibility(View.VISIBLE);
+
+        findViewById(R.id.buttons_group).setVisibility(View.GONE);
+        findViewById(R.id.sample3_button3).setVisibility(View.GONE);
     }
 
 

@@ -34,10 +34,21 @@
         </android.support.v7.widget.Toolbar>
 
         <ImageView
+            android:id="@+id/square_red"
+            style="@style/MaterialAnimations.Icon.Big"
+            android:src="@drawable/circle_24dp"
+            android:visibility="gone"
+            />
+
+        <ImageView
             android:id="@+id/square_green"
             style="@style/MaterialAnimations.Icon.Big"
             android:src="@drawable/circle_24dp"
             app:colorTint="@{animationsSample.color}" />
+
+
+
+
 
 
         <TextView
@@ -53,6 +64,7 @@
 
 
         <LinearLayout
+            android:id="@+id/buttons_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

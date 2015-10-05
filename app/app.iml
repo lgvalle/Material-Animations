@@ -31,12 +31,14 @@
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/androidTest/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/build/data-binding-info/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/data-binding-info/androidTest/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
@@ -71,8 +73,12 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.databinding/library/1.0-rc1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
@@ -85,13 +91,34 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/build/layout-info" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="appcompat-v7-23.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-23.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-23.0.0" level="project" />
+    <orderEntry type="library" exported="" name="antlr4-4.5" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-runtime-0.12.613" level="project" />
+    <orderEntry type="library" exported="" name="butterknife-7.0.1" level="project" />
+    <orderEntry type="library" exported="" name="org.abego.treelayout.core-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="antlr-runtime-3.5.2" level="project" />
+    <orderEntry type="library" exported="" name="antlr4-runtime-4.5" level="project" />
+    <orderEntry type="library" exported="" name="baseLibrary-1.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
+    <orderEntry type="library" exported="" name="cardview-v7-23.0.0" level="project" />
+    <orderEntry type="library" exported="" name="design-23.0.0" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="adapters-1.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="commons-codec-1.10" level="project" />
+    <orderEntry type="library" exported="" name="compiler-1.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="ST4-4.0.8" level="project" />
+    <orderEntry type="library" exported="" name="compilerCommon-1.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-stdlib-0.12.613" level="project" />
+    <orderEntry type="library" exported="" name="library-1.0-rc1" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-23.0.1" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview-v7-23.0.0" level="project" />
+    <orderEntry type="library" exported="" name="antlr4-annotations-4.5" level="project" />
   </component>
 </module>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sampleDemo"
+            type="com.lgvalle.material_animations.Sample" />
+    </data>
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="0dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/sample_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+
+            android:padding="@dimen/spacing_double">
+
+            <ImageView
+                android:id="@+id/sample_icon"
+                style="@style/MaterialAnimations.Icon.Small"
+                android:visibility="invisible"
+                android:src="@drawable/circle_24dp"
+                app:colorTint="@{sampleDemo.color}" />
+
+            <TextView
+                android:id="@+id/sample_name"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:text="@{sampleDemo.name}"
+                tools:text="View animations sample" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>
