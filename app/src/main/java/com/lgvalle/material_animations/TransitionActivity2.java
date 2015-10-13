@@ -37,8 +37,11 @@ public class TransitionActivity2 extends BaseDetailActivity {
         }  else {
             transition = TransitionInflater.from(this).inflateTransition(R.transition.explode);
         }
+
+        TransitionHelper.excludeTargets(transition);
         getWindow().setEnterTransition(transition);
     }
+
 
     private void setupLayout() {
         findViewById(R.id.exit_button).setOnClickListener(new View.OnClickListener() {
@@ -52,6 +55,7 @@ public class TransitionActivity2 extends BaseDetailActivity {
     private Transition buildEnterTransition() {
         Explode enterTransition = new Explode();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        TransitionHelper.excludeTargets(enterTransition);
         return enterTransition;
     }
 

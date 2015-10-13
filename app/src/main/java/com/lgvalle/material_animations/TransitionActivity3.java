@@ -39,6 +39,8 @@ public class TransitionActivity3 extends BaseDetailActivity {
         }  else {
             transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_from_bottom);
         }
+
+        TransitionHelper.excludeTargets(transition);
         getWindow().setEnterTransition(transition);
     }
 
@@ -55,6 +57,7 @@ public class TransitionActivity3 extends BaseDetailActivity {
         Slide enterTransition = new Slide();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         enterTransition.setSlideEdge(Gravity.RIGHT);
+        TransitionHelper.excludeTargets(enterTransition);
         return enterTransition;
     }
 
