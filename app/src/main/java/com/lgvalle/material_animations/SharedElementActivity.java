@@ -4,8 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
 import android.transition.Slide;
+import android.transition.Transition;
 import android.view.Gravity;
-
 import com.lgvalle.material_animations.databinding.ActivitySharedelementBinding;
 
 public class SharedElementActivity extends BaseDetailActivity {
@@ -28,6 +28,8 @@ public class SharedElementActivity extends BaseDetailActivity {
 
     private void setupWindowAnimations() {
         // We are not interested in defining a new Enter Transition. Instead we change default transition duration
+        Transition enterTransition = getWindow().getEnterTransition();
+        TransitionHelper.excludeTargets(enterTransition);
         getWindow().getEnterTransition().setDuration(getResources().getInteger(R.integer.anim_duration_long));
     }
 
