@@ -13,7 +13,7 @@ public class SharedElementFragment2 extends Fragment {
 
     public static SharedElementFragment2 newInstance(Sample sample) {
         Bundle args = new Bundle();
-        args.putSerializable(EXTRA_SAMPLE, sample);
+        args.putParcelable(EXTRA_SAMPLE, sample);
         SharedElementFragment2 fragment = new SharedElementFragment2();
         fragment.setArguments(args);
         return fragment;
@@ -22,7 +22,7 @@ public class SharedElementFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment2, container, false);
-        Sample sample = (Sample) getArguments().getSerializable(EXTRA_SAMPLE);
+        Sample sample = (Sample) getArguments().getParcelable(EXTRA_SAMPLE);
 
         ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
         DrawableCompat.setTint(squareBlue.getDrawable(), sample.color);

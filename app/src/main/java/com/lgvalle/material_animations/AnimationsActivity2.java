@@ -38,7 +38,7 @@ public class AnimationsActivity2 extends BaseDetailActivity {
 
     private void bindData() {
         ActivityAnimations2Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_animations2);
-        sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        sample = (Sample) getIntent().getExtras().getParcelable(EXTRA_SAMPLE);
         binding.setAnimationsSample(sample);
     }
 
