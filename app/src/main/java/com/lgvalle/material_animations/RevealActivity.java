@@ -46,7 +46,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
 
     private void bindData() {
         ActivityRevealBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_reveal);
-        Sample sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        Sample sample = (Sample) getIntent().getExtras().getParcelable(EXTRA_SAMPLE);
         binding.setReveal1Sample(sample);
     }
 

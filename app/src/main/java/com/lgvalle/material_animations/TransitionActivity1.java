@@ -24,7 +24,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
 
     private void bindData() {
         ActivityTransition1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_transition1);
-        sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        sample = (Sample) getIntent().getExtras().getParcelable(EXTRA_SAMPLE);
         binding.setTransition1Sample(sample);
     }
 

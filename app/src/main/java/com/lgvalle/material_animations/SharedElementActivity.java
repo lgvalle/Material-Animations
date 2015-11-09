@@ -14,7 +14,7 @@ public class SharedElementActivity extends BaseDetailActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Sample sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        Sample sample = (Sample) getIntent().getExtras().getParcelable(EXTRA_SAMPLE);
         bindData(sample);
         setupWindowAnimations();
         setupLayout(sample);
