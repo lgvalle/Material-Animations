@@ -18,6 +18,7 @@
         android:layout_gravity="center"
         android:layout_margin="2dp"
         android:clickable="true"
+
         android:foreground="?android:attr/selectableItemBackground"
         card_view:cardCornerRadius="0dp"
         card_view:cardPreventCornerOverlap="true"
@@ -25,6 +26,7 @@
 
         <LinearLayout
             android:id="@+id/sample_layout"
+            android:background="#F44336"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
