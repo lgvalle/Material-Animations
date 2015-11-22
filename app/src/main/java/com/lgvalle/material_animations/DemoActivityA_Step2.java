@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class DemoActivityA_Step1 extends AppCompatActivity {
+public class DemoActivityA_Step2 extends AppCompatActivity {
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.toolbar)

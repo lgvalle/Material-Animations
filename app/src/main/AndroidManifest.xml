@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:theme="@style/MaterialAnimations">
         <activity
-            android:name=".DemoActivityA_Step1"
+            android:name=".DemoActivityA_Step3"
             android:label="@string/app_name"
             android:theme="@style/Talk_Green">
             <intent-filter>
@@ -50,8 +50,18 @@
 
         <activity
             android:name=".DemoActivityB_Step1"
-            android:theme="@style/MaterialAnimations.Red">
-        </activity>
+            android:theme="@style/MaterialAnimations.Red"></activity>
+
+
+        <activity
+            android:name=".DemoActivityB_Step2"
+            android:theme="@style/MaterialAnimations.Red"></activity>
+
+        <activity
+            android:name=".DemoActivityB_Step3"
+            android:theme="@style/MaterialAnimations.Red"></activity>
+
+
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class DemoActivityA_Step1 extends AppCompatActivity {
+public class DemoActivityA_Step3 extends AppCompatActivity {
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.toolbar)
@@ -50,6 +50,11 @@ public class DemoActivityA_Step1 extends AppCompatActivity {
         // Re-enter transition is executed when returning to this activity
         Transition explode = new Explode();
         explode.setDuration(1000);
+
+        explode.excludeTarget(R.id.toolbar, true);
+        explode.excludeTarget(android.R.id.statusBarBackground, true);
+        explode.excludeTarget(android.R.id.navigationBarBackground, true);
+
         getWindow().setExitTransition(explode);
     }
 
@@ -68,7 +73,7 @@ public class DemoActivityA_Step1 extends AppCompatActivity {
     @OnClick({R.id.card_view, R.id.card_view2, R.id.card_view3, R.id.card_view4})
     public void clickOnCard() {
 
-        Intent i = new Intent(this, DemoActivityB_Step2.class);
+        Intent i = new Intent(this, DemoActivityB_Step3.class);
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, null);
         startActivity(i, transitionActivityOptions.toBundle());
     }
