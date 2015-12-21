@@ -30,7 +30,7 @@ Transitions are defined on XML files in `res/transition`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<fade xmlns:android="http://schemas.android.com/apk/res/
+<fade xmlns:android="http://schemas.android.com/apk/res/"
     android:duration="1000"/>
 
 ```
@@ -39,7 +39,7 @@ Transitions are defined on XML files in `res/transition`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<slide xmlns:android="http://schemas.android.com/apk/res/
+<slide xmlns:android="http://schemas.android.com/apk/res/"
     android:duration="1000"/>
 
 ```
