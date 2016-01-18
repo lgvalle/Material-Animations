@@ -9,7 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
+import android.transition.Fade;
 import android.transition.Transition;
 import android.widget.TextView;
 
@@ -48,12 +48,15 @@ public class DemoActivityA_Step3 extends AppCompatActivity {
 
     private void setupWindowAnimations() {
         // Re-enter transition is executed when returning to this activity
-        Transition explode = new Explode();
+        Transition explode = new Fade();
         explode.setDuration(1000);
 
         explode.excludeTarget(R.id.toolbar, true);
         explode.excludeTarget(android.R.id.statusBarBackground, true);
         explode.excludeTarget(android.R.id.navigationBarBackground, true);
+
+        getWindow().setAllowEnterTransitionOverlap(false);
+        getWindow().setAllowReturnTransitionOverlap(false);
 
         getWindow().setExitTransition(explode);
     }

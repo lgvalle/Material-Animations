@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardBackgroundColor="#F3CC20"
+    card_view:cardPreventCornerOverlap="true"
+    card_view:cardUseCompatPadding="true"
+    style="@style/demo3_card">
+
+    <LinearLayout
+        android:id="@+id/sample_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_double">
+
+        <TextView
+            android:id="@+id/sample_name"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:textColor="@color/light_grey"
+            android:layout_height="wrap_content"
+            tools:text="A" />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

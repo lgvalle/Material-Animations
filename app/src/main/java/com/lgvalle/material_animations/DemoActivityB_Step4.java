@@ -8,7 +8,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
+import android.transition.Slide;
 import android.transition.Transition;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,11 +23,11 @@ import butterknife.ButterKnife;
 /**
  *
  *
- * EXCLUDE TARGET
+ * RETURN TRANSITION
  *
  *
  */
-public class DemoActivityB_Step3 extends AppCompatActivity {
+public class DemoActivityB_Step4 extends AppCompatActivity {
     @Bind(R.id.demo_fab)
     View fab;
     @Bind(R.id.view_root)
@@ -52,15 +54,24 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
         Transition transition = new Fade();
         transition.setDuration(1000);
 
-        transition.excludeTarget(R.id.toolbar, true);
-        transition.excludeTarget(android.R.id.statusBarBackground, true);
-        transition.excludeTarget(android.R.id.navigationBarBackground, true);
+        Transition returnSlide = new Slide(Gravity.RIGHT);
+        returnSlide.setDuration(1000);
+
+        excludeCommons(transition);
+        excludeCommons(returnSlide);
 
 
         getWindow().setEnterTransition(transition);
+        getWindow().setReturnTransition(returnSlide);
 
         getWindow().setAllowEnterTransitionOverlap(false);
         getWindow().setAllowReturnTransitionOverlap(false);
+    }
+
+    private void excludeCommons(Transition transition) {
+        transition.excludeTarget(R.id.toolbar, true);
+        transition.excludeTarget(android.R.id.statusBarBackground, true);
+        transition.excludeTarget(android.R.id.navigationBarBackground, true);
     }
 
     private void setupSamples() {

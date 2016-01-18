@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class DemoActivityA_Step1 extends AppCompatActivity {
+public class DemoActivityA_Step5 extends AppCompatActivity {
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.toolbar)
@@ -39,7 +39,7 @@ public class DemoActivityA_Step1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_step1);
+        setContentView(R.layout.activity_a_step5);
         ButterKnife.bind(this);
         setupWindowAnimations();
         setupToolbar();
@@ -50,6 +50,14 @@ public class DemoActivityA_Step1 extends AppCompatActivity {
         // Re-enter transition is executed when returning to this activity
         Transition explode = new Explode();
         explode.setDuration(1000);
+
+        explode.excludeTarget(R.id.toolbar, true);
+        explode.excludeTarget(android.R.id.statusBarBackground, true);
+        explode.excludeTarget(android.R.id.navigationBarBackground, true);
+
+        getWindow().setAllowEnterTransitionOverlap(false);
+        getWindow().setAllowReturnTransitionOverlap(false);
+
         getWindow().setExitTransition(explode);
     }
 
@@ -68,8 +76,8 @@ public class DemoActivityA_Step1 extends AppCompatActivity {
     @OnClick({R.id.card_view, R.id.card_view2, R.id.card_view3, R.id.card_view4})
     public void clickOnCard() {
 
-        Intent i = new Intent(this, DemoActivityB_Step1.class);
-        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, null);
+        Intent i = new Intent(this, DemoActivityB_Step11.class);
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, cardView2, "element-beta");
         startActivity(i, transitionActivityOptions.toBundle());
     }
 

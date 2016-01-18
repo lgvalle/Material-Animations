@@ -35,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_margin="16dp"
         android:clickable="true"
-        card_view:cardBackgroundColor="#F44336"
+        card_view:cardBackgroundColor="#F3CC20"
         android:foreground="?android:attr/selectableItemBackground"
         android:transitionName="element-beta"
         card_view:cardCornerRadius="0dp"

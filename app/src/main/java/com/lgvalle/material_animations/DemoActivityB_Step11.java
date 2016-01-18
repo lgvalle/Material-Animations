@@ -1,31 +1,33 @@
 package com.lgvalle.material_animations;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
 import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- *
- *
- * EXCLUDE TARGET
- *
- *
+ * TRANSITION LISTENER - PARA SALIR
  */
-public class DemoActivityB_Step3 extends AppCompatActivity {
+public class DemoActivityB_Step11 extends AppCompatActivity {
     @Bind(R.id.demo_fab)
     View fab;
     @Bind(R.id.view_root)
@@ -39,7 +41,7 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_b_step1);
+        setContentView(R.layout.activity_b_step11);
         ButterKnife.bind(this);
         setupWindowAnimations();
         setupSamples();
@@ -49,18 +51,19 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
 
     private void setupWindowAnimations() {
         // Re-enter transition is executed when returning to this activity
-        Transition transition = new Fade();
-        transition.setDuration(1000);
+        fab.animate()
+                .alpha(1)
+                .scaleY(1)
+                .scaleX(1)
+                .setDuration(2500)
+                .setStartDelay(1500)
+                .setInterpolator(new FastOutSlowInInterpolator());
+    }
 
+    private void excludeCommons(Transition transition) {
         transition.excludeTarget(R.id.toolbar, true);
         transition.excludeTarget(android.R.id.statusBarBackground, true);
         transition.excludeTarget(android.R.id.navigationBarBackground, true);
-
-
-        getWindow().setEnterTransition(transition);
-
-        getWindow().setAllowEnterTransitionOverlap(false);
-        getWindow().setAllowReturnTransitionOverlap(false);
     }
 
     private void setupSamples() {
@@ -101,4 +104,69 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        fab.animate()
+                .alpha(0)
+                .scaleY(0)
+                .scaleX(0)
+                .setDuration(2500)
+                .setInterpolator(new FastOutSlowInInterpolator());
+
+
+    }
+
+    @OnClick(R.id.demo_fab)
+    public void onClickFab() {
+        int transitionId = R.transition.changebounds_with_arcmotion;
+        TransitionInflater inflater = TransitionInflater.from(this);
+        Transition transition = inflater.inflateTransition(R.transition.changebounds_with_arcmotion);
+        transition.setInterpolator(new FastOutSlowInInterpolator());
+        transition.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                fab.setVisibility(View.GONE);
+                animateRevealFromCoordinates(dummyLayer);
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionPause(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionResume(Transition transition) {
+
+            }
+        });
+        TransitionManager.beginDelayedTransition(viewRoot, transition);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        fab.setLayoutParams(layoutParams);
+    }
+
+
+    private Animator animateRevealFromCoordinates(ViewGroup viewRoot) {
+        int x = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
+        int y = viewRoot.getBottom() - fab.getHeight();
+        float finalRadius = (float) Math.hypot(x, y);
+
+        Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, fab.getWidth(), finalRadius);
+        viewRoot.setVisibility(View.VISIBLE);
+        anim.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        anim.setInterpolator(new FastOutSlowInInterpolator());
+        anim.start();
+        return anim;
+    }
 }

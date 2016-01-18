@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:theme="@style/MaterialAnimations">
         <activity
-            android:name=".DemoActivityA_Step3"
+            android:name=".DemoActivityB_Step11"
             android:label="@string/app_name"
             android:theme="@style/Talk_Green">
             <intent-filter>
@@ -50,17 +50,44 @@
 
         <activity
             android:name=".DemoActivityB_Step1"
-            android:theme="@style/MaterialAnimations.Red"></activity>
+            android:theme="@style/MaterialAnimations.Red"/>
 
 
         <activity
             android:name=".DemoActivityB_Step2"
-            android:theme="@style/MaterialAnimations.Red"></activity>
+            android:theme="@style/MaterialAnimations.Red"/>
 
         <activity
             android:name=".DemoActivityB_Step3"
-            android:theme="@style/MaterialAnimations.Red"></activity>
+            android:theme="@style/MaterialAnimations.Red"/>
 
+        <activity
+            android:name=".DemoActivityB_Step4"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step5"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step6"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step7"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step8"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step9"
+            android:theme="@style/MaterialAnimations.Red"/>
+
+        <activity
+            android:name=".DemoActivityB_Step10"
+            android:theme="@style/MaterialAnimations.Red"/>
 
     </application>
 

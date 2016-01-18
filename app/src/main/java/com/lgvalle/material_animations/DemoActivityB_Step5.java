@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 /**
  *
  *
- * EXCLUDE TARGET
+ * SHARED ELEMENT
  *
  *
  */
-public class DemoActivityB_Step3 extends AppCompatActivity {
+public class DemoActivityB_Step5 extends AppCompatActivity {
     @Bind(R.id.demo_fab)
     View fab;
     @Bind(R.id.view_root)
@@ -39,7 +39,7 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_b_step1);
+        setContentView(R.layout.activity_b_step5);
         ButterKnife.bind(this);
         setupWindowAnimations();
         setupSamples();
@@ -51,16 +51,15 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
         // Re-enter transition is executed when returning to this activity
         Transition transition = new Fade();
         transition.setDuration(1000);
+        excludeCommons(transition);
+        getWindow().setEnterTransition(transition);
+        getWindow().getSharedElementReturnTransition().setDuration(1000);
+    }
 
+    private void excludeCommons(Transition transition) {
         transition.excludeTarget(R.id.toolbar, true);
         transition.excludeTarget(android.R.id.statusBarBackground, true);
         transition.excludeTarget(android.R.id.navigationBarBackground, true);
-
-
-        getWindow().setEnterTransition(transition);
-
-        getWindow().setAllowEnterTransitionOverlap(false);
-        getWindow().setAllowReturnTransitionOverlap(false);
     }
 
     private void setupSamples() {

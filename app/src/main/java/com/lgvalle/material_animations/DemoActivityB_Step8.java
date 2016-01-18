@@ -19,13 +19,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- *
- *
- * EXCLUDE TARGET
- *
- *
+ * TRANSITION LISTENER - PARA SALIR
  */
-public class DemoActivityB_Step3 extends AppCompatActivity {
+public class DemoActivityB_Step8 extends AppCompatActivity {
     @Bind(R.id.demo_fab)
     View fab;
     @Bind(R.id.view_root)
@@ -39,7 +35,7 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_b_step1);
+        setContentView(R.layout.activity_b_step8);
         ButterKnife.bind(this);
         setupWindowAnimations();
         setupSamples();
@@ -51,16 +47,48 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
         // Re-enter transition is executed when returning to this activity
         Transition transition = new Fade();
         transition.setDuration(1000);
+        excludeCommons(transition);
+        getWindow().setEnterTransition(transition);
+        getWindow().getSharedElementReturnTransition().setDuration(1000);
 
+        final Transition f = getWindow().getSharedElementEnterTransition();
+        f.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                //TransitionManager.beginDelayedTransition(viewRoot);
+                fab.animate()
+                        .scaleX(1)
+                        .scaleY(1)
+                        .setDuration(500);
+                f.removeListener(this);
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionPause(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionResume(Transition transition) {
+
+            }
+        });
+    }
+
+    private void excludeCommons(Transition transition) {
         transition.excludeTarget(R.id.toolbar, true);
         transition.excludeTarget(android.R.id.statusBarBackground, true);
         transition.excludeTarget(android.R.id.navigationBarBackground, true);
-
-
-        getWindow().setEnterTransition(transition);
-
-        getWindow().setAllowEnterTransitionOverlap(false);
-        getWindow().setAllowReturnTransitionOverlap(false);
     }
 
     private void setupSamples() {
@@ -101,4 +129,17 @@ public class DemoActivityB_Step3 extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        fab.animate()
+                .scaleX(0)
+                .scaleY(0)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        finishAfterTransition();
+                    }
+                });
+
+    }
 }
