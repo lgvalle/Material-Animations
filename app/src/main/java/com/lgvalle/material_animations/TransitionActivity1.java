@@ -30,6 +30,7 @@ public class TransitionActivity1 extends BaseDetailActivity {
 
     private void setupWindowAnimations() {
         Visibility enterTransition = buildEnterTransition();
+        TransitionHelper.excludeTargets(enterTransition);
         getWindow().setEnterTransition(enterTransition);
     }
 
@@ -101,12 +102,14 @@ public class TransitionActivity1 extends BaseDetailActivity {
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         // This view will not be affected by enter transition animation
         enterTransition.excludeTarget(R.id.square_red, true);
+        TransitionHelper.excludeTargets(enterTransition);
         return enterTransition;
     }
 
     private Visibility buildReturnTransition() {
         Visibility enterTransition = new Slide();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        TransitionHelper.excludeTargets(enterTransition);
         return enterTransition;
     }
 }

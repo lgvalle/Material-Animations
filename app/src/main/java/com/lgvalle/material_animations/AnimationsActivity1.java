@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.transition.Fade;
+import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.lgvalle.material_animations.databinding.ActivityAnimations1Binding;
 
 public class AnimationsActivity1 extends BaseDetailActivity {
@@ -31,7 +31,9 @@ public class AnimationsActivity1 extends BaseDetailActivity {
     }
 
     private void setupWindowAnimations() {
-        getWindow().setReenterTransition(new Fade());
+        Transition reEnterTransition = new Fade();
+        TransitionHelper.excludeTargets(reEnterTransition);
+        getWindow().setReenterTransition(reEnterTransition);
     }
 
     private void bindData() {

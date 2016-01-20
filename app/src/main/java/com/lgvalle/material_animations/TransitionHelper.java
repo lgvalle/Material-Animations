@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
+import android.transition.Transition;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -70,4 +71,9 @@ public class TransitionHelper {
         participants.add(new Pair<>(view, view.getTransitionName()));
     }
 
+    public static void excludeTargets(Transition transition) {
+        transition.excludeTarget(android.R.id.statusBarBackground, true);
+        transition.excludeTarget(android.R.id.navigationBarBackground, true);
+        transition.excludeTarget(R.id.toolbar, true);
+    }
 }

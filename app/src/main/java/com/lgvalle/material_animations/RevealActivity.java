@@ -58,6 +58,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
 
     private void setupEnterAnimations() {
         Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.changebounds_with_arcmotion);
+        TransitionHelper.excludeTargets(transition);
         getWindow().setSharedElementEnterTransition(transition);
         transition.addListener(new Transition.TransitionListener() {
             @Override

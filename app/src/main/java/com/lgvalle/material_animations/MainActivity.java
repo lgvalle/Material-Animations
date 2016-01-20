@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Slide slideTransition = new Slide();
         slideTransition.setSlideEdge(Gravity.LEFT);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        TransitionHelper.excludeTargets(slideTransition);
         getWindow().setReenterTransition(slideTransition);
         getWindow().setExitTransition(slideTransition);
     }
