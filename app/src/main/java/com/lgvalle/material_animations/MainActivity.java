@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    protected void setupToolbar() {
+    private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

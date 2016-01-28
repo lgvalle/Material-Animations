@@ -31,9 +31,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
     private Toolbar toolbar;
     private Interpolator interpolator;
     private TextView body;
-    private View btnGreen;
     private View btnRed;
-    private View btnBlue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +120,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
         bgViewGroup = (RelativeLayout) findViewById(R.id.reveal_root);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         body = ((TextView) findViewById(R.id.sample_body));
-        btnGreen = findViewById(R.id.square_green);
+        View btnGreen = findViewById(R.id.square_green);
         btnGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +134,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
                 revealRed();
             }
         });
-        btnBlue = findViewById(R.id.square_blue);
+        View btnBlue = findViewById(R.id.square_blue);
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

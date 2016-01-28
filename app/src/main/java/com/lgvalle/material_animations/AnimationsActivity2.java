@@ -18,14 +18,12 @@ import java.util.List;
 public class AnimationsActivity2 extends BaseDetailActivity {
 
     private static final int DELAY = 100;
-    private ViewGroup sceneRoot;
-    private Sample sample;
     private Scene scene0;
     private Scene scene1;
     private Scene scene2;
     private Scene scene3;
     private Scene scene4;
-    private List<View> viewsToAnimate = new ArrayList<>();
+    private final List<View> viewsToAnimate = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +35,15 @@ public class AnimationsActivity2 extends BaseDetailActivity {
     }
 
     private void bindData() {
-        ActivityAnimations2Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_animations2);
-        sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
+        ActivityAnimations2Binding binding = DataBindingUtil.setContentView(
+                this, R.layout.activity_animations2);
+        Sample sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
         binding.setAnimationsSample(sample);
     }
 
     private void setupWindowAnimations() {
-        getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide_from_bottom));
+        getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(
+                R.transition.slide_from_bottom));
         getWindow().getEnterTransition().addListener(new Transition.TransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
@@ -71,13 +71,12 @@ public class AnimationsActivity2 extends BaseDetailActivity {
 
     private void setupLayout() {
         final ViewGroup activityRoot = (ViewGroup) findViewById(R.id.buttons_group);
-        sceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+        ViewGroup sceneRoot = (ViewGroup) findViewById(R.id.scene_root);
 
         scene0 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene0, this);
         scene0.setEnterAction(new Runnable() {
             @Override
             public void run() {
-                View title = scene0.getSceneRoot().findViewById(R.id.scene0_title);
                 for (int i = 0; i < viewsToAnimate.size(); i++) {
                     View child = viewsToAnimate.get(i);
                     child.animate()
@@ -115,7 +114,8 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds));
+                TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).
+                        inflateTransition(R.transition.slide_and_changebounds));
             }
         });
 
@@ -123,7 +123,8 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential));
+                TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).
+                        inflateTransition(R.transition.slide_and_changebounds_sequential));
             }
         });
 
@@ -131,7 +132,8 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
+                TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).
+                        inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
             }
         });
 

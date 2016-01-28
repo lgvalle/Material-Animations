@@ -11,12 +11,12 @@ import android.view.View;
  * Created by lgvalle on 12/09/15.
  */
 public class BaseDetailActivity extends AppCompatActivity {
-    protected static final String EXTRA_SAMPLE = "sample";
-    protected static final String EXTRA_TYPE = "type";
-    protected static final int TYPE_PROGRAMMATICALLY = 0;
-    protected static final int TYPE_XML = 1;
+    static final String EXTRA_SAMPLE = "sample";
+    static final String EXTRA_TYPE = "type";
+    static final int TYPE_PROGRAMMATICALLY = 0;
+    static final int TYPE_XML = 1;
 
-    protected void setupToolbar() {
+    void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,8 +29,7 @@ public class BaseDetailActivity extends AppCompatActivity {
         return true;
     }
 
-    @SuppressWarnings("unchecked")
-    protected void transitionTo(Intent i) {
+    @SuppressWarnings("unchecked") void transitionTo(Intent i) {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(this, true);
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairs);
         startActivity(i, transitionActivityOptions.toBundle());

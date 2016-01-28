@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecyclerAdapter.SamplesViewHolder> {
     private final Activity activity;
-    private List<Sample> samples;
+    private final List<Sample> samples;
 
     public SamplesRecyclerAdapter(Activity activity, List<Sample> samples) {
         this.activity = activity;
@@ -31,12 +31,12 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
 
     @Override
     public void onBindViewHolder(final SamplesViewHolder viewHolder, final int position) {
-        final Sample sample = samples.get(position);
+        final Sample sample = samples.get(viewHolder.getAdapterPosition());
         viewHolder.binding.setSample(sample);
         viewHolder.binding.sampleLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (position) {
+                switch (viewHolder.getAdapterPosition()) {
                     case 0:
                         transitionToActivity(TransitionActivity1.class, sample);
                         break;
@@ -87,7 +87,7 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
 
 
     public class SamplesViewHolder extends RecyclerView.ViewHolder {
-        RowSampleBinding binding;
+        final RowSampleBinding binding;
 
         public SamplesViewHolder(View rootView) {
             super(rootView);
