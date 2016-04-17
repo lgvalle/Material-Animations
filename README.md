@@ -288,7 +288,7 @@ Steps **a)** and **b)** are exactly the **same**. Only **c)** changes
 ```xml
 <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
     ...
-    <item name="android:windowContentTransitions">true</item
+    <item name="android:windowContentTransitions">true</item>
     ...
 </style>
 ```
