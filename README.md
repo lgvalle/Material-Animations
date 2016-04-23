@@ -198,7 +198,7 @@ This is something you need to set up once on your app `styles.xml`.
 ```xml
 <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
     ...
-    <item name="android:windowContentTransitions">true</item
+    <item name="android:windowContentTransitions">true</item>
     ...
 </style>
 ```
