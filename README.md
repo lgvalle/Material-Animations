@@ -1,3 +1,7 @@
+# UNMAINTAINED
+No maintainance is intended. 
+The content is still valid as a reference but it won't contain the latest new stuff
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Material--Animations-brightgreen.svg?style=flat)](http://android-arsenal.com/details/3/1880)
 
 [Android Transition Framework][transition-framework] can be used for **three** main things:
