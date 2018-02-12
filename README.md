@@ -531,7 +531,7 @@ There are many different ways you can create a reveal animation. The important t
 
 ```java
 int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
-int cy = viewRoot.getTop();
+int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
 int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
 
 Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
@@ -545,7 +545,7 @@ anim.start();
 
 ```java
 int cx = (viewRoot.getLeft() + viewRoot.getRight()) / 2;
-int cy = (viewRoot.getTop() + viewRoot.getBottom()) / 2;
+int cy = viewRoot.getTop();
 int finalRadius = Math.max(viewRoot.getWidth(), viewRoot.getHeight());
 
 Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, cx, cy, 0, finalRadius);
