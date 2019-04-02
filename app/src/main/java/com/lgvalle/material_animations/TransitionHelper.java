@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * Helper class for creating content transitions used with {@link android.app.ActivityOptions}.
  */
-public class TransitionHelper {
+class TransitionHelper {
 
     /**
      * Create the transition participants required during a activity transition while

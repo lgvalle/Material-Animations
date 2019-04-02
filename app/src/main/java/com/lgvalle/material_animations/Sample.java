@@ -12,8 +12,8 @@ import java.io.Serializable;
  */
 public class Sample implements Serializable {
 
-    int color;
-    String name;
+    final int color;
+    private final String name;
 
     public Sample(@ColorRes int color, String name) {
         this.color = color;

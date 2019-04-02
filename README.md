@@ -1,3 +1,9 @@
+# UNMAINTAINED
+No maintainance is intended. 
+The content is still valid as a reference but it won't contain the latest new stuff
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Material--Animations-brightgreen.svg?style=flat)](http://android-arsenal.com/details/3/1880)
+
 [Android Transition Framework][transition-framework] can be used for **three** main things:
 
 1. Animate activity layout content when transitioning from one activity to another.
@@ -28,7 +34,7 @@ Transitions are defined on XML files in `res/transition`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<fade xmlns:android="http://schemas.android.com/apk/res/
+<fade xmlns:android="http://schemas.android.com/apk/res/"
     android:duration="1000"/>
 
 ```
@@ -37,7 +43,7 @@ Transitions are defined on XML files in `res/transition`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<slide xmlns:android="http://schemas.android.com/apk/res/
+<slide xmlns:android="http://schemas.android.com/apk/res/"
     android:duration="1000"/>
 
 ```
@@ -158,7 +164,7 @@ We can modify previous Fade sample and define a `ReturnTransition` for `Transiti
         getWindow().setEnterTransition(fade);
         
         Slide slide = new Slide();
-        fade.setDuration(1000);
+        slide.setDuration(1000);
         getWindow().setReturnTransition(slide);        
     }
 
@@ -286,7 +292,7 @@ Steps **a)** and **b)** are exactly the **same**. Only **c)** changes
 ```xml
 <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
     ...
-    <item name="android:windowContentTransitions">true</item
+    <item name="android:windowContentTransitions">true</item>
     ...
 </style>
 ```
@@ -321,7 +327,7 @@ To do this you need to include shared element transition information as part of 
 FragmentB fragmentB = FragmentB.newInstance(sample);
 
 // Defines enter transition for all fragment views
-Slide slideTransition = new Slide(Gravity.END);
+Slide slideTransition = new Slide(Gravity.RIGHT);
 slideTransition.setDuration(1000);
 sharedElementFragment2.setEnterTransition(slideTransition);
 
@@ -354,7 +360,7 @@ This works for both Fragments and Activities shared element transitions.
 FragmentB fragmentB = FragmentB.newInstance(sample);
 
 // Defines enter transition for all fragment views
-Slide slideTransition = new Slide(Gravity.END);
+Slide slideTransition = new Slide(Gravity.RIGHT);
 slideTransition.setDuration(1000);
 sharedElementFragment2.setEnterTransition(slideTransition);
 
@@ -622,21 +628,21 @@ btnRed.setLayoutParams(layoutParams);
 
 [transition_explode]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_explode.gif
 [transition_slide]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_slide.gif
-[transition_fade]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade.gif
-[transition_fade2]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_fade2.gif
-[transition_a_to_b]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_A_to_B.png
-[transition_b_to_a]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/transition_B_to_A.png
+[transition_fade]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade.gif
+[transition_fade2]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_fade2.gif
+[transition_a_to_b]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_A_to_B.png
+[transition_b_to_a]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/transition_B_to_A.png
 
-[shared_element]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element.png
-[shared_element_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_anim.gif
-[shared_element_no_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_no_overlap.gif
-[shared_element_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_element_overlap.gif
+[shared_element]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element.png
+[shared_element_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_anim.gif
+[shared_element_no_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_no_overlap.gif
+[shared_element_overlap]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_element_overlap.gif
 
-[scenes_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/scenes_anim.gif
-[view_layout_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/view_layout_anim.gif
+[scenes_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/scenes_anim.gif
+[view_layout_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/view_layout_anim.gif
 
-[reveal_blue]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_blue.gif
-[reveal_red]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_red.gif
-[reveal_green]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_green.gif
-[reveal_yellow]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/reveal_yellow.gif
-[reveal_shared_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/dev/screenshots/shared_reveal_anim.gif
+[reveal_blue]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_blue.gif
+[reveal_red]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_red.gif
+[reveal_green]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_green.gif
+[reveal_yellow]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/reveal_yellow.gif
+[reveal_shared_anim]: https://raw.githubusercontent.com/lgvalle/Material-Animations/master/screenshots/shared_reveal_anim.gif

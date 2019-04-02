@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
 import android.transition.Transition;
@@ -30,9 +31,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
     private Toolbar toolbar;
     private Interpolator interpolator;
     private TextView body;
-    private View btnGreen;
     private View btnRed;
-    private View btnBlue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +120,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
         bgViewGroup = (RelativeLayout) findViewById(R.id.reveal_root);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         body = ((TextView) findViewById(R.id.sample_body));
-        btnGreen = findViewById(R.id.square_green);
+        View btnGreen = findViewById(R.id.square_green);
         btnGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +134,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
                 revealRed();
             }
         });
-        btnBlue = findViewById(R.id.square_blue);
+        View btnBlue = findViewById(R.id.square_blue);
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +154,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
             }
         });
         body.setText(R.string.reveal_body4);
-        body.setTextColor(getColor(R.color.theme_blue_background));
+        body.setTextColor(ContextCompat.getColor(this, R.color.theme_blue_background));
     }
 
     private void revealRed() {
@@ -170,7 +169,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
             public void onTransitionEnd(Transition transition) {
                 animateRevealColor(bgViewGroup, R.color.sample_red);
                 body.setText(R.string.reveal_body3);
-                body.setTextColor(getColor(R.color.theme_red_background));
+                body.setTextColor(ContextCompat.getColor(RevealActivity.this, R.color.theme_red_background));
                 btnRed.setLayoutParams(originalParams);
             }
 
@@ -197,13 +196,13 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
     private void revealYellow(float x, float y) {
         animateRevealColorFromCoordinates(bgViewGroup, R.color.sample_yellow, (int) x, (int) y);
         body.setText(R.string.reveal_body1);
-        body.setTextColor(getColor(R.color.theme_yellow_background));
+        body.setTextColor(ContextCompat.getColor(this, R.color.theme_yellow_background));
     }
 
     private void revealGreen() {
         animateRevealColor(bgViewGroup, R.color.sample_green);
         body.setText(R.string.reveal_body2);
-        body.setTextColor(getColor(R.color.theme_green_background));
+        body.setTextColor(ContextCompat.getColor(this, R.color.theme_green_background));
     }
 
     private void hideTarget() {
@@ -266,7 +265,7 @@ public class RevealActivity extends BaseDetailActivity implements View.OnTouchLi
         float finalRadius = (float) Math.hypot(viewRoot.getWidth(), viewRoot.getHeight());
 
         Animator anim = ViewAnimationUtils.createCircularReveal(viewRoot, x, y, 0, finalRadius);
-        viewRoot.setBackgroundColor(getColor(color));
+        viewRoot.setBackgroundColor(ContextCompat.getColor(this, color));
         anim.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
         anim.start();

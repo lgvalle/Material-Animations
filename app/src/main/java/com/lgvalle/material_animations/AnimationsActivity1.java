@@ -87,7 +87,7 @@ public class AnimationsActivity1 extends BaseDetailActivity {
         if (positionChanged) {
             lp.gravity = Gravity.CENTER;
         } else {
-            lp.gravity = Gravity.START;
+            lp.gravity = Gravity.LEFT;
         }
         positionChanged = !positionChanged;
         square.setLayoutParams(lp);
